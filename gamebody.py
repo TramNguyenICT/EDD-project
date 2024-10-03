@@ -40,29 +40,41 @@ grinch_airport = random.randint(1002,1059)
 # cập nhật grinch_challenge_id vào airport id đó)
 helsinki_welcome =" "
 print(helsinki_welcome)
+
 def airport_direction():
-    airport_id_list = list()
-    for airport_id in range(1001,1061):
-        sql15 = f"select airport_id from airport where is_finished = '0'"
-        cursor = connection.cursor()
-        cursor.execute(sql15)
-        airport_id_list = cursor.fetchall()
+
+    #tao ra airport_list
+    sql15 = f"select airport_id from airport where is_finished = '0'"
+    cursor = connection.cursor()
+    cursor.execute(sql15)
+    airport_id_tuples = cursor.fetchall()
+    airport_id_list = [item[0] for item in airport_id_tuples]
+    airport_id_list.remove(1001)
+    airport_id_list.remove(1060)
+    print(airport_id_list)
+    
     next_airport_left = random.choice(airport_id_list)
-    next_airport_left_name = none #dùng sql lấy tên của airport id đó
+    sql16 = f"select airport_name from airport where airport_id = {next_airport_left}"
+    cursor.execute(sql16)
+    next_airport_left_name = cursor.fetchall()
     airport_id_list.remove(next_airport_left)
     next_airport_right = random.choice(airport_id_list)
-    next_airport_right_name = none #dùng sql lấy tên của airport id đó
-    print(f"On your left is {next_airport_left} and on the right is {next_airport_right}. Where do you want to go?")
+    sql17 = f"select airport_name from airport where airport_id = {next_airport_right}"
+    cursor.execute(sql17)
+    next_airport_right_name = cursor.fetchall()
+
+    print(f"On your left is {next_airport_left_name} and on the right is {next_airport_right_name}. Where do you want to go?")
     airport_direction_choice = input("Type L for left or R for right: ")
     while True:
         if airport_direction_choice == "L":
             current_airport = next_airport_left
             break
         elif airport_direction_choice == "R":
-            current_airport = next_airport_right
+             current_airport = next_airport_right
             break
         else:
             airport_direction_choice = input("Invalid choice. Type L for left or R for right: ")
+
     return current_airport
 
 
