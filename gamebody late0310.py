@@ -118,7 +118,141 @@ def airport_quiz(airport_id):
     letter_count_tuple = cursor.fetchall()
     letter_count = int(letter_count_tuple[0][0])
 
-    if airport_id == "1021":
+    if airport_id == 1002:
+        print(' Where is Ivalo Aiport located?')
+        a1002 = input('A.Northern Finland\nB. Southern Finland (A\B)').lower().strip()
+        if a1002 == 'a':
+            print('Congratulations! You got 10 letters!')
+            letter_count += letter_change
+        else:
+            print('Sorry, you lose 10 letters!')
+            letter_count -= letter_change
+
+    if airport_id == 1003:
+        a1003 = input("Why did two 4's skip lunch? Because they already ....?").lower().strip()
+        if a1003 == '8' or a1003 == 'eight':
+            print("Congratulations! You got 4 letters!")
+            letter_count += letter_change
+        else:
+            print("Sorry, you lose 4 letters!")
+            letter_count -= letter_change
+
+    if airport_id == 1004:
+        print(" What is English equivalent of 'Opiskelja'?")
+        a1004 = input('Opiskelja is ').lower().strip()
+        if a1004 == 'student':
+            print("You got 2 letters!")
+            letter_count += letter_change
+
+        else:
+            print("Sorry, you lose 2 letters!")
+            letter_count -= letter_change
+
+    if airport_id == 1005:
+        print("What should you do when you see a polar bear in Finland?")
+        a1005 = input("A. Run away\nB. Play dead\nC. Try to make yourself look bigger").lower().strip()
+        print("HAHAHA! There is no polar bear in the wild in Finland! You get nothing!")
+
+    if airport_id == 1006:
+        print("Let 's answer a question on the northern lights phenomenon.")
+        print("What are the Northern Lights also known as?")
+        answer1006 = 'auroraborealis'
+        a1006 = input(" The answer is: ").lower().strip()
+        if a1006 == answer1006 or a1006 == 'aurora':
+            print("Congratulations! 10 more letters now are in your bag")
+            letter_count += letter_change
+        else:
+            print("Sorry, you lose 10 more letters now are in your bag")
+            letter_count -= letter_change
+
+    if airport_id == 1007:
+        print("Let's rearrange letter of English word!")
+        a1007a = input("LISTEN--> ").lower().strip()
+        a1007b = input("RACE--> ").lower().strip()
+        a1007c = input("CINEMA--> ").lower().strip()
+        if a1007a == 'silent' and a1007b == 'care' and a1007c == 'iceman':
+            print("Congratulations! You got 6 letters!")
+            letter_count += letter_change
+        else:
+            print("Sorry, you lose 6 letters!")
+            letter_count -= letter_change
+
+    if airport_id == 1008:
+        a1008 = input("What is the largest living organism on Earth? ").lower().strip()
+        if a1008 == 'mushroom':
+            print("Congratulations! You got 4 letters!")
+            letter_count += letter_change
+        else:
+            print("Sorry, your 4 letters are taken!")
+            letter_count -= letter_change
+
+    if airport_id == 1009:
+        letter_count += letter_change
+
+        # change random two remaining reindeers
+    if airport_id == 1010:
+        print("congratulations! You have 1 chance to change your reindeer!")
+        a1010 = input("Yes or No? ").lower().strip()
+        if a1010 == 'yes':
+            print(" Your reindeer now is ...")
+        if a1010 == 'no':
+            print(" You did not change your reindeer!Yours is still ...")
+
+    if airport_id == 1011:
+        print("So sorry! Lappeenranta Airport took 5 letters from you.")
+        letter_count -= letter_change
+
+    if airport_id == 1012:
+        print("Welcome to Mikkeli Airport! Give you 5 more letters. Have a great journey!")
+        letter_count += letter_change
+
+    if airport_id == 1013:
+        print("You have no challenges here! You can move to next airport.")
+
+    if airport_id == 1015:
+        print("I am an odd number. But if you take away a letter from my name, I will become even. What am I?")
+        a1015 = input("I am ").lower().strip()
+        if a1015 == 'seven' or a1015 == '7':
+            print("Congratulations! You got 5 letters!")
+            letter_count += letter_change
+        else:
+            print("Sorry, you lose 5 letters!")
+            letter_count -= letter_change
+
+    if airport_id == 1016:
+        print("Sorry I have to say that your number of letters is taken of 50!")
+        letter_count -= letter_change
+
+    if airport_id == 1017:
+        print("Your number of letters is doubled!")
+        letter_count *= 2
+
+    if airport_id == 1018:
+        print("Do you like chocolate?")
+        a1018 = input("A. Yes\nB.No ").lower().strip()
+        if a1018 == 'yes':
+            print(
+                " You'll go for a tour at Chocolate Factory (in Charlie and the Chocolate Factory) and it costs 10 letters.")
+            letter_count -= letter_change
+        if a1018 == 'no':
+            print("You'll move to the next airport!")
+
+    if airport_id == 1019:
+        print("Your number of letters is divided by 2!")
+        letter_count = letter_count // 2
+
+    if airport_id == 1020:
+        print("Let's help the farmer!")
+        a1020 = input("A farmer has 15 cows, and all but 8 of them run away.\n"
+                      "How many cows does the farmer have left? (Give a number)").lower().strip()
+        if a1020 == '8' or a1020 == 'eight':
+            print("5 letters more for you!")
+            letter_count += letter_change
+        else:
+            print("Oops! Your answer is wrong! You lose 5 letters.")
+            letter_count -= letter_change
+
+    if airport_id == 1021:
         print("Do you know the famous band ABBA is from Sweden?\n"
               "Let's fill in the lyrics of their song Dancing Queen to gain 5 letters!")
         print("You can dance, you can jive\n"
@@ -128,9 +262,7 @@ def airport_quiz(airport_id):
 
         print("Choose the correct lyrics from the following options:")
         print("1. Dancing\n2. Singing\n3. Digging")
-
         answer1021 = input("Enter the correct choice (A, B, or C): ").lower().strip()
-
         if answer1021 == "c":
             print("Correct! You win 5 letters!")
             letter_count += letter_change
@@ -142,7 +274,7 @@ def airport_quiz(airport_id):
     # 1022
     # archery game
 
-    if airport_id == "1022":
+    if airport_id == 1022:
         print("You get 1 shot. Try to hit the bullseye (score 10)!\n"
               "Press Enter to shoot!")
         answer1022 = random.randint(0, 10)
@@ -154,7 +286,7 @@ def airport_quiz(airport_id):
     # 1023
     # Midsommar
 
-    if airport_id == "1023":
+    if airport_id == 1023:
         print("Have you ever watch movie Midsommar from Sweden?")
         print("A. Yes\nB. No")
         answer1023 = input("Enter your choice (A or B): ").lower().strip()
@@ -169,7 +301,7 @@ def airport_quiz(airport_id):
     # 1024
     # rock, scissors, paper
 
-    if airport_id == "1024":
+    if airport_id == 1024:
         # computer choice
         choices1024 = ["rock", "scissors", "paper"]
         computer_choice = random.choice(choices1024)
@@ -193,7 +325,7 @@ def airport_quiz(airport_id):
     # 1025
     # celsius
 
-    if airport_id == "1025":
+    if airport_id == 1025:
         print("Do you know which was an important measurement unit proposed by a famous Swedish physicist?")
         print("A. ampere (electric current)\nB. degree celsius (temperature)\nC. kelvin (thermodynamic emperature)")
 
@@ -213,7 +345,7 @@ def airport_quiz(airport_id):
     # 1026
     # nobel
 
-    if airport_id == "1026":
+    if airport_id == 1026:
         print(
             "Swedish entrepreneur Alfred Nobel left the majority of this fortune to the establishment of Nobel Prize.")
         print("Which of the following is NOT a Nobel Prize category?")
@@ -232,7 +364,7 @@ def airport_quiz(airport_id):
     # 1027
     # find a box
 
-    if airport_id == "1027":
+    if airport_id == 1027:
         print("Press Enter to open")
         input()
         print("You got 10 extra letters!")
@@ -241,7 +373,7 @@ def airport_quiz(airport_id):
     # 1028
     # icehotel
 
-    if airport_id == "1028":
+    if airport_id == 1028:
         print("You see the coolest ice hotel (pun intended)")
         print("Let's stay for a night!\n"
               "Press Enter to pay")
@@ -252,7 +384,7 @@ def airport_quiz(airport_id):
     # 1029
     # ikea meatballs
 
-    if airport_id == "1029":
+    if airport_id == 1029:
         print("You are a bit hungry. How about some Swedish meatballs at IKEA?")
         print("Press Enter to go to IKEA")
         input()
@@ -262,7 +394,7 @@ def airport_quiz(airport_id):
     # 1030
     # catty cat
 
-    if airport_id == "1030":
+    if airport_id == 1030:
         print("Meoooooooow\n"
               "Is that a cat?")
         print("Do you want to pet it?")
@@ -280,7 +412,7 @@ def airport_quiz(airport_id):
     # 1031
     # riddle
 
-    if airport_id == "1031":
+    if airport_id == 1031:
         print(f"Lose me once I'll come back stronger,\n"
               f"lose me twice I'll leave forever, what am I?")
         answer1031 = input("Type your guess here: ").lower().strip()
@@ -297,7 +429,7 @@ def airport_quiz(airport_id):
     # 1032
     # envelope
 
-    if airport_id == "1032":
+    if airport_id == 1032:
         print("There's an envelope slipped under your feet!")
         print("Press Enter to open")
         input()
@@ -309,7 +441,7 @@ def airport_quiz(airport_id):
     # 1033
     # mariah carey
 
-    if airport_id == "1033":
+    if airport_id == 1033:
         print("Who is she?")
         answer1028 = input("Type her name here: ").lower().strip()
         if answer1028 == "mariah carey":
@@ -321,7 +453,7 @@ def airport_quiz(airport_id):
     # 1034
     # dynamite
 
-    if airport_id == "1034":
+    if airport_id == 1034:
         print("Do you know that dynamite was invented by Swedish chemist Alfred Nobel?")
         print("Press Enter to continue")
         input()
@@ -334,7 +466,7 @@ def airport_quiz(airport_id):
     # 1035
     # reindeer accident
 
-    if airport_id == "1035":
+    if airport_id == 1035:
         print("You see that the reindeers are roaming around.")
         print("Oh noooo you get into a reindeer accident :(")
         print("Press Enter to continue")
@@ -345,7 +477,7 @@ def airport_quiz(airport_id):
     # 1036
     # icelandic home
 
-    if airport_id == "1036":
+    if airport_id == 1036:
         print("A new friend invites you to visit his house in Iceland.\n"
               "Do you take off your shoes when entering the house?")
         answer1036 = input("Type here Yes or No to answer: ").lower().strip()
@@ -363,7 +495,7 @@ def airport_quiz(airport_id):
 
     # 1037
     # glacier
-    if airport_id == "1037":
+    if airport_id == 1037:
         print("More than 10% of Iceland is covered by glaciers\n"
               "And of course you just slipped on them :(")
         print("Press Enter to get up")
@@ -375,7 +507,7 @@ def airport_quiz(airport_id):
     # 1038
     # troll
 
-    if airport_id == "1038":
+    if airport_id == 1038:
         print("Troll is a big part of Icelandic Folklore, along with elves which you actually are!")
         print("You walk around and meet a troll!")
         print("Do you want to talk to him?")
@@ -391,7 +523,7 @@ def airport_quiz(airport_id):
     # 1039
     # snowman joke
 
-    if airport_id == "1039":
+    if airport_id == 1039:
         print("He wants to tell you a joke!")
         print("Press Enter to continue")
         input()
@@ -404,7 +536,7 @@ def airport_quiz(airport_id):
     # 1040
     # harry potter
 
-    if airport_id == "1040":
+    if airport_id == 1040:
         print("We want to know what is your Harry Potter house!")
         print("Harry Potter House are: Gryffindor, Hufflepuff, Ravenclaw, Slytherin.")
         answer1040 = input("Type your house here: ")
@@ -563,7 +695,7 @@ def airport_quiz(airport_id):
             print("You lost 5 letters")
             letter_count -= letter_change
 
-    if airport_id == 1060:
+    if airport_id == 1014:
         print("You meet a poor girl selling matches on the street. What would you do?")
         answer1060 = input("A.Nothing. B.Buy all the matches. C. Give her food. (A/B/C)").lower().strip()
         if answer1060 == "b" or "c":
