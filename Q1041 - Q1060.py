@@ -1,6 +1,70 @@
-airport_id = None
-letter_count = 0
-letter_change = 5
+import mysql.connector
+import random
+
+connection = mysql.connector.connect(
+    host = '127.0.0.1',
+    port = 3306,
+    database = 'elfdeliverydash',
+    user = 'root',
+    password = '180790',
+    autocommit = True,
+    charset='utf8mb4',
+    collation='utf8mb4_unicode_ci',)
+
+#update airport finish = FALSE
+game_intro ="Hello!"
+print(game_intro)
+player_name = input("How should I call you?")
+print("Hello", player_name)
+# tạo 1 player mới vào bảng player
+reindeer_instruction = " "
+print(reindeer_instruction)
+print("Which one do you want?")
+
+reindeer_choice = int(input("1.Rudolph, 2.Vixen, 3.Cupid (1/2/3)"))
+while True:
+    if reindeer_choice == 1:
+        reindeer_id = 2001
+        break
+    elif reindeer_choice == 2:
+        reindeer_id = 2002
+        break
+    elif reindeer_choice == 3:
+        reindeer_id = 2003
+        break
+    else:
+        reindeer_choice = int(input("Invalid choice. 1.Rudolph, 2.Vixen, 3.Cupid (1/2/3) ")
+# cập nhật reindeer_id vào bảng player
+grinch_challenge = random.randint(1,6)
+grinch_airport = random.randint(1002,1059)
+# cập nhật grinch_challenge_id vào airport id đó)
+helsinki_welcome =" "
+print(helsinki_welcome)
+def airport_direction():
+    airport_id_list = list()
+    for airport_id in range(1001,1061):
+        if is_finished == False:
+            airport_id_list = append(airport_id)
+    next_airport_left = random.choice(airport_id_list)
+    next_airport_left_name = none #dùng sql lấy tên của airport id đó
+    airport_id_list.remove(next_airport_left)
+    next_airport_right = random.choice(airport_id_list)
+    next_airport_right_name = none #dùng sql lấy tên của airport id đó
+    print(f"On your left is {next_airport_left} and on the right is {next_airport_right}. Where do you want to go?")
+    airport_direction_choice = input("Type L for left or R for right: ")
+    while True:
+        if airport_direction_choice == "L":
+            current_airport = next_airport_left
+            break
+        elif airport_direction_choice == "R":
+            current_airport = next_airport_right
+            break
+        else:
+            airport_direction_choice = input("Invalid choice. Type L for left or R for right: ")
+    return current_airport
+
+
+
 
 if airport_id == 1041:
     print("Welcome to Kristainsand Airport, the most crowded airport in Norway.")
