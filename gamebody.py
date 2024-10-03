@@ -43,8 +43,10 @@ print(helsinki_welcome)
 def airport_direction():
     airport_id_list = list()
     for airport_id in range(1001,1061):
-        if is_finished == False:
-            airport_id_list = append(airport_id)
+        sql15 = f"select airport_id from airport where is_finished = '0'"
+        cursor = connection.cursor()
+        cursor.execute(sql15)
+        airport_id_list = cursor.fetchall()
     next_airport_left = random.choice(airport_id_list)
     next_airport_left_name = none #dùng sql lấy tên của airport id đó
     airport_id_list.remove(next_airport_left)
@@ -63,7 +65,7 @@ def airport_direction():
             airport_direction_choice = input("Invalid choice. Type L for left or R for right: ")
     return current_airport
 
-print()
+
 
 
 
