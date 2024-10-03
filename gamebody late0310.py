@@ -166,6 +166,9 @@ def grinch_quiz(challenge_id):
 def check_the_grinch(airport_id):
     if grinch_airport == airport_id:
         grinch_quiz(grinch_challenge)
+    sql5 = f"UPDATE player SET letter_count = {letter_count} WHERE player_name = '{player_name}'"
+    cursor.execute(sql5)
+    print(f"Currently, you have {letter_count} letters.")
 
 def airport_quiz(airport_id):
     # print airport welcome
@@ -809,6 +812,7 @@ def airport_quiz(airport_id):
 for i in range(10):
     current_airport = airport_direction()
     airport_quiz(current_airport)
+    check_the_grinch(current_airport)
 
 #print the script that the map was lost
 map_lost_script = " "
