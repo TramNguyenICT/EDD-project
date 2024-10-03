@@ -5,7 +5,7 @@ is_finished = False
 import random
 
 
-
+#
 #1021
 #Dancing Queen lyrics
 
