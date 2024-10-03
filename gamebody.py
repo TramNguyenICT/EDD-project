@@ -63,8 +63,7 @@ def airport_direction():
     cursor.execute(sql17)
     next_airport_right_name = cursor.fetchall()
 
-    print(
-        f"On your left is {next_airport_left_name} and on the right is {next_airport_right_name}. Where do you want to go?")
+    print(f"On your left is {next_airport_left_name} and on the right is {next_airport_right_name}. Where do you want to go?")
     airport_direction_choice = input("Type L for left or R for right: ")
     while True:
         if airport_direction_choice == "L":
