@@ -63,6 +63,7 @@ def airport_direction():
             airport_direction_choice = input("Invalid choice. Type L for left or R for right: ")
     return current_airport
 
+print()
 
 
 
