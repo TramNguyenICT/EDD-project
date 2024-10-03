@@ -56,6 +56,13 @@ helsinki_welcome = " "
 print(helsinki_welcome)
 current_airport = 1001
 sql3 = f"UPDATE player SET letter_count = (SELECT letter_change FROM airport WHERE airport_id = 1001) WHERE player_name = '{player_name}'"
+cursor.execute(sql3)
+letter_count = cursor.fetchone()
+
+# cập nhật is_finished của Helsinki = 1
+sql4 = f"UPDATE airport SET is_finished = '1' WHERE airport_id = '{current_airport}'"
+cursor = connection.cursor()
+cursor.execute(sql4)
 
 def airport_direction():
     # tao ra airport_list
@@ -63,9 +70,7 @@ def airport_direction():
     cursor.execute(sql15)
     airport_id_tuples = cursor.fetchall()
     airport_id_list = [item[0] for item in airport_id_tuples]
-    airport_id_list.remove(1001)
     airport_id_list.remove(1060)
-    print(airport_id_list)
 
     next_airport_left = random.choice(airport_id_list)
     sql16 = f"select airport_name from airport where airport_id = {next_airport_left}"
@@ -93,6 +98,9 @@ def airport_direction():
     # cập nhật current airport vào bảng player
     sql18 = f"UPDATE player SET current_airport = '{current_airport}' WHERE player_name = '{player_name}'"
     cursor.execute(sql18)
+    # cập nhật is_finnished thành 1
+    sql14 = f"UPDATE airport SET is_finished = '1' WHERE airport_id = '{current_airport}'"
+    cursor.execute(sql14)
     return current_airport
 
 def airport_greeting(airport_id):
@@ -101,6 +109,63 @@ def airport_greeting(airport_id):
     greeting_tuple = cursor.fetchall()
     greeting = greeting_tuple[0][0]
     return greeting
+
+def get_airport_reindeer_id(airport_id):
+    # test the reindeer_id in this airport
+    sql9 = f"SELECT reindeer_id FROM airport WHERE airport_id = {airport_id}"
+    cursor.execute(sql9)
+    airport_reindeer_id_tuple = cursor.fetchall()
+    airport_reindeer_id = int(airport_reindeer_id_tuple[0][0])
+    return airport_reindeer_id
+
+def grinch_quiz(challenge_id):
+    global letter_count
+    print("Hahaha, Grinch's here.")
+    print("What a coincidence we met!")
+    print("I have a challenge for you, little elf.")
+    if challenge_id == 1:
+        print("Do you like Christmas Carol?")
+        choice = input("Yes/No: ").lower().strip()
+        if choice == "no" or "n":
+            print("It's strange for an elf not to like Christmas Carol")
+            print("I like you, sweetie.")
+            print("Take these 20 letters.")
+            letter_count += 20
+        else:
+            print("I hate Chistmas, I hate anything related to Chrismas.")
+            print("I will stole 20 letters from you, hahaha.")
+            print("Good bye, little elf")
+            letter_count -= 20
+    if challenge_id == 2:
+        choice = input("What is your favorite color? ").lower().strip()
+        if choice == "green":
+            print("That's my color!")
+            print("I will give you 10 letters for that.")
+            letter_count += 10
+        else:
+            print("Noooo, only green is beautiful")
+            print("I don't like you! Bye!")
+    if challenge_id == 3:
+        print("What’s faster: a sneeze or a cheetah?")
+        choice = input("A.Sneeze, B.Cheetah: ").lower().strip()
+        if choice == "a" or "sneeze":
+            print("Hmm, a smart elf. I've never thought you could get the right answer!")
+            print("Here is 20 letters for you!")
+            letter_count += 20
+        else:
+            print("It's Sneeze! A sneeze can travel up to 160 km/h, faster than a cheetah’s sprint!")
+            print("So sad, you lost 20 letters!")
+            letter_count -= 20
+    if challenge_id == 4:
+        None
+    if challenge_id == 5:
+        None
+    if challenge_id == 6:
+        None
+
+def check_the_grinch(airport_id):
+    if grinch_airport == airport_id:
+        grinch_quiz(grinch_challenge)
 
 def airport_quiz(airport_id):
     # print airport welcome
@@ -117,6 +182,12 @@ def airport_quiz(airport_id):
     cursor.execute(sql21)
     letter_count_tuple = cursor.fetchall()
     letter_count = int(letter_count_tuple[0][0])
+
+    #get the reindeer_id
+    sql10 = f"SELECT reindeer_id FROM player WHERE player_name = '{player_name}'"
+    cursor.execute(sql10)
+    reindeer_id_tuple = cursor.fetchall()
+    reindeer_id = int(reindeer_id_tuple[0][0])
 
     if airport_id == 1002:
         print(' Where is Ivalo Aiport located?')
@@ -166,7 +237,13 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
 
     if airport_id == 1007:
-        print("Let's rearrange letter of English word!")
+        print("Let's rearrange letter of English word: LISTEN, RACE, CINEMA")
+        airport_reindeer_id = get_airport_reindeer_id(airport_id)
+        if reindeer_id == airport_reindeer_id:
+            print("Hi. It's me, Vixen - the reindeer.")
+            print("I can help you with this!")
+            print("I have a close friend, he is a care iceman but he is a bit silent.")
+            print("That's the hint. Good luck")
         a1007a = input("LISTEN--> ").lower().strip()
         a1007b = input("RACE--> ").lower().strip()
         a1007c = input("CINEMA--> ").lower().strip()
@@ -176,6 +253,9 @@ def airport_quiz(airport_id):
         else:
             print("Sorry, you lose 6 letters!")
             letter_count -= letter_change
+        airport_reindeer_id = get_airport_reindeer_id(airport_id)
+
+
 
     if airport_id == 1008:
         a1008 = input("What is the largest living organism on Earth? ").lower().strip()
@@ -222,6 +302,14 @@ def airport_quiz(airport_id):
     if airport_id == 1016:
         print("Sorry I have to say that your number of letters is taken of 50!")
         letter_count -= letter_change
+        airport_reindeer_id = get_airport_reindeer_id(airport_id)
+        if reindeer_id == airport_reindeer_id:
+            print('Citizens:"Oh, is it RUDOLPH!!!!!!!!!!!!!!!"')
+            print(''"We are huge fans of you, Rudolph"'')
+            print('"Let us help you to find your lost letters"')
+            print(''"Yay, here is your 50 letters."'')
+            print(''"Good bye, Rudolph. Have a nice trip!"'')
+            letter_count += letter_change
 
     if airport_id == 1017:
         print("Your number of letters is doubled!")
@@ -649,6 +737,13 @@ def airport_quiz(airport_id):
     if airport_id == 1053:
         print("The Danish cookies is so good, you taste them and you lose 10 letters for the cookies")
         letter_count -= letter_change
+        airport_reindeer_id = get_airport_reindeer_id(airport_id)
+        if reindeer_id == airport_reindeer_id:
+            print("Oh, is it Cupid? How adorable you are!")
+            print("Do you know Denmark is the first country to legalise same-sex unions in 1989?")
+            print("Since we all appreciate love, you will get 20 more letters.")
+            print("Good bye Cupid. Keep spreading love to the world.")
+            letter_count += 20
 
     if airport_id == 1054:
         answer1054 = input("What will you actually find at the end of every rainbow?").lower().strip()
@@ -709,3 +804,32 @@ def airport_quiz(airport_id):
     sql22 = f"UPDATE player SET letter_count = {letter_count} WHERE player_name = '{player_name}'"
     cursor.execute(sql22)
     print(f"Currently, you have {letter_count} letters.")
+
+# players go through 10 first airport
+for i in range(10):
+    current_airport = airport_direction()
+    airport_quiz(current_airport)
+
+#print the script that the map was lost
+map_lost_script = " "
+print(map_lost_script)
+
+#random 2 airports next to the goal
+sql23 = f"select airport_id from airport where is_finished = '0'"
+cursor.execute(sql23)
+airport_id_tuples = cursor.fetchall()
+airport_id_list = [item[0] for item in airport_id_tuples]
+airport_id_list.remove(1060)
+airport_n_2 = random.choice(airport_id_list)
+airport_id_list.remove(airport_n_2)
+airport_n_1 = random.choice(airport_id_list)
+
+#player go through 2 airports next to the goal
+print("Which way do you want to go next?")
+user_random_choice = input("Left (L) or Right (R): ")
+airport_quiz(airport_n_2)
+print("Which way do you want to go next?")
+user_random_choice = input("Left (L) or Right (R): ")
+airport_quiz(airport_n_1)
+
+#player reach the goal
