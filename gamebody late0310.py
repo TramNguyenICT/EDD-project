@@ -157,11 +157,34 @@ def grinch_quiz(challenge_id):
             print("So sad, you lost 20 letters!")
             letter_count -= 20
     if challenge_id == 4:
-        None
+        print("Which would taste worse: a sock-flavored ice cream or ketchup-flavored toothpaste?")
+        choice = input('A. A sock-flavored ice cream, B, A ketchup-flavored toothpaste').lower().strip()
+        if choice == "b":
+            print("Sure! At least it is edible! Here're 20 letters for you!")
+            letter_count += 20
+        else:
+            print("No, you can't eat the toothpaste. Give me 20 letters!")
+            letter_count -= 20
     if challenge_id == 5:
-        None
+        print("What is the name of tmy dog? ")
+        choice = input("A.Milo, B.Max, C.Rex, D.Leo").lower().strip()
+        if choice == "b" or "max":
+            print("Yes, the most adorable dog in the world is Max!!!")
+            letter_count += 10
+        else:
+            print("How come you don't know Max, such a cute dog. How pitiful. I'll take 10 letters from you.")
+            letter_count -= 10
     if challenge_id == 6:
-        None
+        print("What do I want to receive for Christmas?")
+        choice = input("A.A Christmas cake, B.Iphone 16, C.New dogs clothes, D.A Sweaters ")
+        if choice == "c" or "newdogsclothes":
+            print("That's right! This winter will be colder. Max, my dog, has to be warm. Do you mind give me some?")
+            print("Anyway, I give you 10 letters.")
+            letter_count += 10
+        else:
+            print("Silly elf. I don't need anything. But Max, my dog, needs some clothes to survive this winter.")
+            print("I'm not happy. I will take 10 letters from you.")
+            letter_count -= 10
 
 def check_the_grinch(airport_id):
     if grinch_airport == airport_id:
@@ -837,3 +860,15 @@ user_random_choice = input("Left (L) or Right (R): ")
 airport_quiz(airport_n_1)
 
 #player reach the goal
+if letter_count >= 100:
+    result = "Win"
+else:
+    result = "Lose"
+sql24 = f"UPDATE player SET result = '{result}' WHERE player_name = '{player_name}"
+lose_goal_intro = " "
+win_goal_intro=" "
+
+if result == "Win":
+    print(win_goal_intro)
+else:
+    print(lose_goal_intro)
