@@ -88,8 +88,8 @@ def airport_direction():
     next_airport_right_tuple = cursor.fetchall()
     next_airport_right_name = next_airport_right_tuple[0][0]
 
-    print(f"On your left is {next_airport_left_name} and on the right is {next_airport_right_name}. Where do you want to go?")
-    airport_direction_choice = input("Type L for left or R for right: ").lower().strip()
+    print(f'On your LEFT is "{next_airport_left_name}" and on the RIGHT is "{next_airport_right_name}". Where do you want to go?')
+    airport_direction_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
     while True:
         if airport_direction_choice == "l":
             current_airport = next_airport_left
