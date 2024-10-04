@@ -2,14 +2,15 @@ import mysql.connector
 import random
 
 connection = mysql.connector.connect(
-    host='127.0.0.1',
-    port=3306,
-    database='elfdeliverydash',
-    user='root',
-    password='180790',
-    autocommit=True,
+    host = 'localhost',
+    port = 3306,
+    database = 'elfdeliverydash',
+    user = 'maika',
+    password = '180790',
+    autocommit = True,
     charset='utf8mb4',
-    collation='utf8mb4_unicode_ci', )
+    collation='utf8mb4_unicode_ci',
+)
 
 # update airport finish = FALSE
 sql1 = f"UPDATE airport SET is_finished = 0"
@@ -98,7 +99,7 @@ def airport_direction():
     # cập nhật current airport vào bảng player
     sql18 = f"UPDATE player SET current_airport = '{current_airport}' WHERE player_name = '{player_name}'"
     cursor.execute(sql18)
-    # cập nhật is_finnished thành 1
+    # cập nhật is_finished thành 1
     sql14 = f"UPDATE airport SET is_finished = '1' WHERE airport_id = '{current_airport}'"
     cursor.execute(sql14)
     return current_airport
@@ -189,9 +190,9 @@ def grinch_quiz(challenge_id):
 def check_the_grinch(airport_id):
     if grinch_airport == airport_id:
         grinch_quiz(grinch_challenge)
-    sql5 = f"UPDATE player SET letter_count = {letter_count} WHERE player_name = '{player_name}'"
-    cursor.execute(sql5)
-    print(f"Currently, you have {letter_count} letters.")
+        sql5 = f"UPDATE player SET letter_count = {letter_count} WHERE player_name = '{player_name}'"
+        cursor.execute(sql5)
+        print(f"Currently, you have {letter_count} letters.")
 
 def airport_quiz(airport_id):
     # print airport welcome
@@ -859,7 +860,11 @@ print("Which way do you want to go next?")
 user_random_choice = input("Left (L) or Right (R): ")
 airport_quiz(airport_n_1)
 
+
 #player reach the goal
+rova_script= " "
+print(rova_script)
+
 if letter_count >= 100:
     result = "Win"
 else:
