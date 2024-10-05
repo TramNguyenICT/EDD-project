@@ -160,66 +160,69 @@ def grinch_quiz(challenge_id):
     print("I have a challenge for you, little elf.")
     if challenge_id == 1:
         print("Do you like Christmas Carol?")
-        choice = input("Yes/No: ").lower().strip()
+        choice = input("Type Yes or No: ").lower().strip()
         if choice in ["no", "n"]:
-            print("It's strange for an elf not to like Christmas Carol")
+            print("It's strange for an elf not to like any Christmas Carols.")
             print("I like you, sweetie.")
             print("Take these 20 letters.")
             letter_count += 20
         else:
-            print("I hate Chistmas, I hate anything related to Chrismas.")
+            print("I hate Christmas, I hate anything related to Christmas.")
             print("I will stole 20 letters from you, hahaha.")
-            print("Good bye, little elf")
+            print("Good bye, little elf!")
             letter_count -= 20
     if challenge_id == 2:
         print("What is your favorite color?")
         choice = input("Answer: ").lower().strip()
         if choice == "green":
-            print("That's my color!")
+            print("That's basically me!")
             print("I will give you 10 letters for that.")
             letter_count += 10
         else:
-            print("Noooo, only green is beautiful")
-            print("I don't like you! Bye!")
+            print("Noooo, only green is beautiful! Nothing else!")
+            print("I don't like you! Bye bye!")
     if challenge_id == 3:
         print("What’s faster: a sneeze or a cheetah?")
-        choice = input("A.Sneeze\nB.Cheetah\nA or B: ").lower().strip()
+        choice = input("A. Sneeze\nB. Cheetah\n"
+                       "Type A or B: ").lower().strip()
         if choice == "a" or choice == "sneeze":
             print("Hmm, a smart elf. I've never thought you could get the right answer!")
             print("Here is 20 letters for you!")
             letter_count += 20
         else:
-            print("It's Sneeze! A sneeze can travel up to 160 km/h, faster than a cheetah’s sprint!")
+            print("It's Sneeze, silly elf! A sneeze can travel up to 160 km/h, faster than a cheetah’s sprint!")
             print("So sad, you lost 20 letters!")
             letter_count -= 20
     if challenge_id == 4:
         print("Which would taste worse: a sock-flavored ice cream or ketchup-flavored toothpaste?")
         choice = input('A. A sock-flavored ice cream\nB, A ketchup-flavored toothpaste').lower().strip()
         if choice == "b":
-            print("Sure! At least it is edible! Here're 20 letters for you!")
+            print("Okay, at least it is edible but ewwww! Here are 20 letters for your unique taste!")
             letter_count += 20
         else:
-            print("No, you can't eat the toothpaste. Give me 20 letters!")
+            print("No silly elf, you can't eat the toothpaste. Give me 20 letters!")
             letter_count -= 20
     if challenge_id == 5:
         print("What is the name of my dog? ")
         choice = input("A.Milo, B.Max, C.Rex, D.Leo").lower().strip()
         if choice == "b" or choice == "max":
-            print("Yes, the most adorable dog in the world is Max!!!")
+            print("Yes, the most adorable dog in the world is Max!!! I will give you 10 letters just because I love Max!")
             letter_count += 10
         else:
-            print("How come you don't know Max, such a cute dog. How pitiful. I'll take 10 letters from you.")
+            print("How come you don't know my Max, such a cute dog! How pitiful. Give me 10 letters!")
             letter_count -= 10
     if challenge_id == 6:
         print("What do I want to receive for Christmas?")
-        choice = input("A.A Christmas cake\nB.Iphone 16\nC.New dogs clothes\nD.A Sweaters\nA,B,C or D: ")
-        if choice == "c" or choice == "newdogsclothes":
-            print("That's right! This winter will be colder. Max, my dog, has to be warm. Do you mind give me some?")
-            print("Anyway, I give you 10 letters.")
+        choice = input("A. A huge Christmas cake\nB. New Iphone 16\nC. New dogs clothes\nD. A Sweaters\n"
+                       "Type A,B,C or D: ")
+        if choice == "c":
+            print("I hate Christmas but Max, my dog, always has to be warm. You want to give him some, right?")
+            print("Anyway, I give you 10 letters, just because of Max")
             letter_count += 10
         else:
-            print("Silly elf. I don't need anything. But Max, my dog, needs some clothes to survive this winter.")
-            print("I'm not happy. I will take 10 letters from you.")
+            print("You silly elf! I hate Christmas so I don't need anything.\n"
+                  "But perhaps Max, my dog, needs some more clothes to survive this winter.")
+            print("I'm not happy with your answer. I will take 10 letters from you.")
             letter_count -= 10
     update_letter_count(player_id,letter_count)
 
@@ -228,7 +231,7 @@ def check_the_grinch(airport_id):
         grinch_quiz(grinch_challenge)
         letter_count = get_letter_count(player_id)
         print(f"Currently, you have {letter_count} letters.")
-        print("What an interesting meeting! Press ENTER to continue the journey. ")
+        print("That was an unexpected interaction! Press ENTER to continue the journey. ")
 
 def airport_quiz(airport_id):
     # print airport welcome
@@ -250,57 +253,59 @@ def airport_quiz(airport_id):
     reindeer_id = int(reindeer_id_tuple[0][0])
 
     if airport_id == 1002:
-        print(' Where is Ivalo Aiport located?')
-        a1002 = input('A.Northern Finland\nB. Southern Finland (A or B)').lower().strip()
+        print("Where is Ivalo Aiport located?")
+        a1002 = input('A. Northern Finland\nB. Southern Finland\n'
+                      'Type A or B to answer: ').lower().strip()
         if a1002 == 'a':
             print('Congratulations! You got 10 letters!')
             letter_count += letter_change
         else:
-            print('Sorry, you lose 10 letters!')
+            print("Sorry, it's in the Northern part of Finland! You lose 10 letters this time!")
             letter_count -= letter_change
 
     if airport_id == 1003:
-        a1003 = input("Why did two 4's skip lunch? Because they already ....?").lower().strip()
-        if a1003 == '8' or a1003 == 'eight':
-            print("Congratulations! You got 4 letters!")
+        a1003 = input("Why did two 4s skip lunch? Because they already ...?").lower().strip()
+        if a1003 in ["8","eight", "ate"]:
+            print("Correct! You got 4 letters!")
             letter_count += letter_change
         else:
-            print("Sorry, you lose 4 letters!")
+            print("Not the right answer. It's 8 (or ate)! You lose 4 letters!")
             letter_count -= letter_change
 
     if airport_id == 1004:
-        print(" What is English equivalent of 'Opiskelja'?")
-        a1004 = input('Opiskelja is ').lower().strip()
+        print("What's the English equivalent of 'Opiskelija'?")
+        a1004 = input('Opiskelija means: ').lower().strip()
         if a1004 == 'student':
-            print("You got 2 letters!")
+            print("Somebody knows their Finnish! You got 2 letters!")
             letter_count += letter_change
 
         else:
-            print("Sorry, you lose 2 letters!")
+            print("Not really, you lose 2 letters!")
             letter_count -= letter_change
 
     if airport_id == 1005:
-        print("What should you do when you see a polar bear in Finland?")
-        a1005 = input("A. Run away\nB. Play dead\nC. Try to make yourself look bigger").lower().strip()
-        print("HAHAHA! There is no polar bear in the wild in Finland! You get nothing!")
+        print("You’re in a Finnish forest and spot a polar bear! What should you do?")
+        a1005 = input("A. Run for your life\nB. Play dead\nC. Try to make yourself look bigger").lower().strip()
+        print("HAHAHA! Good one, but there are no polar bears in the wild here! You get nothing!")
 
     if airport_id == 1006:
-        print("Let 's answer a question on the northern lights phenomenon.")
+        print("Ready to test your knowledge about the Northern Lights?")
         print("What are the Northern Lights also known as?")
         answer1006 = 'aurora borealis'
-        a1006 = input(" The answer is: ").lower().strip()
+        a1006 = input("The answer is: ").lower().strip()
         if a1006 == answer1006 or a1006 == 'aurora':
-            print("Congratulations! 10 more letters now are in your bag")
+            print("Congratulations! 10 more letters now are in your bag!")
             letter_count += letter_change
         else:
-            print("Sorry, you lose 10 more letters now are in your bag")
+            print("Sorry, the answer is 'aurora'. You lose 10 letters!")
             letter_count -= letter_change
 
     if airport_id == 1007:
-        print("Let's rearrange letter of English words so that they still have meanings: LISTEN, RACE, CINEMA")
+        print("Let's rearrange the letters of these English words so that they still have meanings:\n"
+              "LISTEN, RACE, CINEMA")
 
         if reindeer_id == 2002:
-            print("Hi. It's me, Vixen - the reindeer.")
+            print("Hi, it's me, Vixen - your reindeer!")
             print("I can help you with this!")
             print("I have a close friend, he is a care iceman but he is a bit silent.")
             print("That's the hint. Good luck")
@@ -311,16 +316,17 @@ def airport_quiz(airport_id):
             print("Congratulations! You got 6 letters!")
             letter_count += letter_change
         else:
-            print("Sorry, you lose 6 letters!")
+            print("Sorry, you lose 6 letters! The answers are 'silent', 'care' and 'iceman'!")
             letter_count -= letter_change
 
     if airport_id == 1008:
-        a1008 = input("What is the largest living organism on Earth? ").lower().strip()
+        a1008 = input("Can you guess what is the largest living organism on Earth?\n"
+                      "Type your answer here: ").lower().strip()
         if a1008 == 'mushroom':
-            print("Congratulations! You got 4 letters!")
+            print("Bravo! You got 4 letters!")
             letter_count += letter_change
         else:
-            print("Sorry, your 4 letters are taken! It's the mushroom!")
+            print("Sorry, 4 letters are taken from your bg! The answer is mushroom!")
             letter_count -= letter_change
 
     if airport_id == 1009:
