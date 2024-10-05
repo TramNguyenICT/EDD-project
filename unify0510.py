@@ -1,5 +1,7 @@
 import mysql.connector
 import random
+import colorama
+from colorama import Fore, Style, Back
 
 connection = mysql.connector.connect(
     host = 'localhost',
@@ -23,45 +25,53 @@ sql2 = f"UPDATE airport SET grinch_id = NULL"
 cursor.execute(sql2)
 connection.commit()
 
+def print_normal(string):
+    print(Fore.WHITE+Style.RESET_ALL+string)
 
-game_intro = ("Welcome to ELF DELIVERY DASH!\n"
+game_intro = ("Welcome to ELF DELIVERY DASH! 🧝🏻🧝🏻🧝🏻\n"
               "You’re the fastest elf, and Santa’s counting on you to deliver 100 letters from children around the world.\n"
               "But it won’t be easy! As you travel across different Nordic airports, tricky challenges and the sneaky Grinch will try to stop you.\n"
               "Some challenges based on real world facts, others… well, let’s just say you’ll need a sense of humor.\n"
               "Can you make it back to Santa with all 100 letters or even more and save Christmas?")
-print(game_intro)
-print("Press any key to start the game!")
+print(Fore.YELLOW + game_intro)
+print_normal("Press any key to start the game!")
 input()
 
 print("What is your elf name?")
 player_name = input("Type your elf name here: ")
 
 reindeer_instruction = ("Surprise! You won't be alone on this adventure!\n"
-                        "It's time to choose your reindeer - your trusty companion!\n"
+                        "It's time to choose a reindeer - your trusty companion!\n"
                         "Each reindeer has its own special ability, useful for specific airports along the way!")
-print(reindeer_instruction)
-each_reindeer_introduction=("Let's get to know our reindeers!\n"
-                            "Rudolph: the world famous reindeer, and everyone recognizes him!\n"
+print(Fore.YELLOW + reindeer_instruction)
+print_normal("Let's get to know our reindeers by pressing ENTER!")
+input()
+each_reindeer_introduction=("Rudolph: the world famous reindeer, and everyone recognizes him!\n"
                             "Vixen: a super intelligent reindeer who's great with all things logical and linguistic\n"
                             "Cupid: the reindeer of love, with a charm that wins the hearts of everyone around")
-print(each_reindeer_introduction)
-print("Who will be your companion?")
+print(Fore.YELLOW + each_reindeer_introduction)
 
-reindeer_choice = int(input("1.Rudolph, 2.Vixen, 3.Cupid (Enter 1, 2 or 3): "))
+print_normal("Who will be your companion?")
+
+reindeer_choice = input("1. Rudolph\n2. Vixen\n3. Cupid\nEnter 1, 2 or 3: ")
 while True:
-    if reindeer_choice == 1:
+    if reindeer_choice == "1":
         reindeer_id = 2001
+        print("You choose Rudolph!")
         break
-    elif reindeer_choice == 2:
+    elif reindeer_choice == "2":
         reindeer_id = 2002
+        print("You choose Vixen!")
         break
-    elif reindeer_choice == 3:
+    elif reindeer_choice == "3":
         reindeer_id = 2003
+        print("You choose Cupid!")
         break
     else:
-        reindeer_choice = int(input("Invalid choice. Please choose again! 1.Rudolph, 2.Vixen, 3.Cupid  (Enter 1, 2 or 3): "))
+        reindeer_choice = input("Invalid choice. Please choose again! 1.Rudolph, 2.Vixen, 3.Cupid  (Enter 1, 2 or 3): ")
 
-print(f"Alright {player_name}, let's start your journey!")
+print(Fore.YELLOW + f"Alright {player_name}, let's begin your journey!")
+print_normal("--------------------------------------------------------------------------------------------------------")
 
 # cập nhật player_name và reindeer_id vào bảng player
 
@@ -83,7 +93,8 @@ connection.commit()
 helsinki_welcome = ("Welcome to Helsinki-Vantaa Airport! This is the starting point for your exciting journey!\n"
                     "You've got 100 letters in your bag, so keep track of them!\n"
                     "The number of letters is the key to your victory!")
-print(helsinki_welcome)
+print(Fore.LIGHTMAGENTA_EX + helsinki_welcome)
+print_normal("--------------------------------------------------------------------------------------------------------")
 current_airport = 1001
 sql5 = f"UPDATE player SET letter_count = (SELECT letter_change FROM airport WHERE airport_id = 1001) WHERE player_id = '{player_id}'"
 cursor.execute(sql5)
@@ -122,7 +133,7 @@ def airport_direction():
     next_airport_right_tuple = cursor.fetchall()
     next_airport_right_name = next_airport_right_tuple[0][0]
 
-    print(f'On your LEFT is "{next_airport_left_name}" and on the RIGHT is "{next_airport_right_name}". Where do you want to go?')
+    print(Fore.YELLOW + f'On your LEFT is "{next_airport_left_name}" and on the RIGHT is "{next_airport_right_name}". Where do you want to go?')
     airport_direction_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
     while True:
         if airport_direction_choice == "l":
@@ -251,7 +262,7 @@ def check_the_grinch(airport_id):
 
 def airport_quiz(airport_id):
     # print airport welcome
-    print(airport_greeting(airport_id))
+    print_normal(airport_greeting(airport_id))
 
     #get the value of letter_change
     sql17 = f"SELECT letter_change FROM airport WHERE airport_id = {airport_id}"
@@ -301,7 +312,8 @@ def airport_quiz(airport_id):
 
     if airport_id == 1005:
         print("You’re in a Finnish forest and spot a polar bear! What should you do?")
-        a1005 = input("A. Run for your life\nB. Play dead\nC. Try to make yourself look bigger").lower().strip()
+        a1005 = input("A. Run for your life\nB. Play dead\nC. Try to make yourself look bigger\n"
+                      "Type A, B or C: ").lower().strip()
         print("HAHAHA! Good one, but there are no polar bears in the wild here! You get nothing!")
 
     if airport_id == 1006:
@@ -881,7 +893,7 @@ def airport_quiz(airport_id):
     print(f"Currently, you have {letter_count} letters.")
 
 # players go through 10 first airport
-for i in range(56):
+for i in range(1):
     current_airport = airport_direction()
     airport_quiz(current_airport)
     check_the_grinch(current_airport)
@@ -890,7 +902,7 @@ for i in range(56):
 #print the script that the map was lost
 map_lost_script = ("Oh no you've just dropped the map and you can't see the next airport that you are going through!\n"
                    "From now on you can only go LEFT or RIGHT until you meet Santa again!")
-print(map_lost_script)
+print(Fore.YELLOW + map_lost_script)
 
 #random 2 airports next to the goal
 sql19 = f"select airport_id from airport where is_finished = '0'"
@@ -903,14 +915,14 @@ airport_id_list.remove(airport_n_2)
 airport_n_1 = random.choice(airport_id_list)
 
 #player go through 2 airports next to the goal
-print("Which way do you want to go next?")
+print_normal("Which way do you want to go next?")
 user_random_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
 while True:
     if user_random_choice == "l" or user_random_choice == "r":
         airport_quiz(airport_n_2)
         break
     else:
-        user_random_choice = input("Invalid choice! Type L for LEFT or R for RIGHT: ")
+        user_random_choice = input("Invalid choice! Type L for LEFT or R for RIGHT: ").lower().strip()
 
 update_current_airport(player_id, airport_n_2)
 
@@ -932,8 +944,8 @@ print("-------------------------------------------------------------------------
 rova_script= ("✨ You've arrived at Rovaniemi, the magical home of Santa Claus! ✨\n"
               "The air is filled with laughter, music, and the delightful scent of cinnamon!\n"
               "Santa’s waiting for you, but wait... did you bring the letters?")
-print(rova_script)
-print("Let’s make Christmas magical! Press any key to give your letters to Santa Claus!")
+print(Fore.LIGHTMAGENTA_EX + rova_script)
+print_normal("Let’s make Christmas magical! Press any key to give your letters to Santa Claus!")
 input()
 update_current_airport(player_id, 1060)
 
@@ -957,6 +969,6 @@ lose_goal_intro = (f"Oh no...\n"
                    f"Santa believes in you, and next time, let's bring all the letters to him!")
 
 if result == "Win":
-    print(win_goal_intro)
+    print(Back.MAGENTA + Fore.BLACK + win_goal_intro)
 else:
-    print(lose_goal_intro)
+    print(Back.MAGENTA + Fore.BLACK + lose_goal_intro)
