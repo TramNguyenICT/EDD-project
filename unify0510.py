@@ -537,7 +537,6 @@ def airport_quiz(airport_id):
         print("Did you know Swedish entrepreneur Alfred Nobel left most of his fortune to create the Nobel Prize?")
         print("Which of the following is NOT a Nobel Prize category?")
         print(f"A. Physics\nB. Mathematics\nC. Chemistry")
-
         answer1026 = input("Enter the correct choice (A, B, or C)\n").lower().strip()
 
         if answer1026 in ["a", "c"]:
