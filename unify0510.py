@@ -958,6 +958,7 @@ else:
     result = "Lose"
 sql20 = f"UPDATE player SET result = '{result}' WHERE player_id = '{player_id}'"
 cursor.execute(sql20)
+
 win_goal_intro = (f"You did it!\n"
                   f"You delivered the total of {final_letter_count} letters to Santa!\n"
                   f"Christmas is saved, and Santa couldn’t be prouder of his fastest elf!\n"
