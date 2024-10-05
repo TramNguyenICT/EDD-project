@@ -66,7 +66,7 @@ cursor = connection.cursor()
 cursor.execute(sql3)
 connection.commit()
 
-helsinki_welcome = "Welcome to Helsinki Airport-here is your starting location on your exciting journey!\n And you have 100 letters in your backpack. Please Keep track of your available letters. The number of letters might affect your win!"
+helsinki_welcome = "Welcome to Helsinki Airport. Here is your starting location on your exciting journey!\n And you have 100 letters in your backpack. Please Keep track of your available letters. The number of letters might affect your win!"
 print(helsinki_welcome)
 current_airport = 1001
 sql3 = f"UPDATE player SET letter_count = (SELECT letter_change FROM airport WHERE airport_id = 1001) WHERE player_id = '{player_id}'"
@@ -116,7 +116,7 @@ def airport_direction():
             current_airport = next_airport_right
             break
         else:
-            airport_direction_choice = input("Invalid choice. Type L for left or R for right: ").lower().strip()
+            airport_direction_choice = input("Invalid choice. Please type again!\nType L for left or R for right: ").lower().strip()
     # cập nhật current airport vào bảng player
     update_current_airport(player_id, current_airport)
     return current_airport
@@ -153,21 +153,26 @@ def grinch_quiz(challenge_id):
     print("What a coincidence we met!")
     print("I have a challenge for you, little elf.")
     if challenge_id == 1:
-        print("Do you like Christmas Carol?")
-        choice = input("Yes/No: ").lower().strip()
-        if choice in ["no", "n"]:
+        print("Do you like Christmas Carol? ")
+        choice = input("Type Yes/No ").lower().strip()
+        if choice == 'no':
             print("It's strange for an elf not to like Christmas Carol")
             print("I like you, sweetie.")
             print("Take these 20 letters.")
             letter_count += 20
-        else:
+        #elif choice == 'yes':
             print("I hate Chistmas, I hate anything related to Chrismas.")
             print("I will stole 20 letters from you, hahaha.")
-            print("Good bye, little elf")
+            print("Goodbye, little elf")
+            letter_count -= 20
+        else:
+            print("I don't understand what you mean! ")
+            print("Anyway, I still stole your 20 letters, hahaha.")
+            print("Goodbye, little elf")
             letter_count -= 20
     if challenge_id == 2:
         print("What is your favorite color?")
-        choice = input("Answer: ").lower().strip()
+        choice = input("Mine is: ").lower().strip()
         if choice == "green":
             print("That's my color!")
             print("I will give you 10 letters for that.")
