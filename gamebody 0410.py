@@ -27,11 +27,13 @@ connection.commit()
 game_intro = "Hello!"
 print(game_intro)
 player_name = input("How should I call you? ")
-print("Hello", player_name)
+print("Hello ", player_name)
 
-reindeer_instruction = " "
+reindeer_instruction = " Here is a surprise! You will not be alone in this journey! Now, it's time to choose your reindeer companion who will be a partner.\nYou will have an exciting journey through various airports, and along the way, a loyal reindeer companion will assist you in completing challenges.\nEach reindeer has a unique ability that will be useful at specific airports during the journey!"
 print(reindeer_instruction)
-print("Which one do you want?")
+#each_reindeer_introduction="Now, let's know about your potential companion. First, Rudolph is a famous reindeer all over the world, and everyone recognizes him!\nThe second one is Vixen, he is incredibly intelligent and well-versed in all things logical and linguistic.\nAnd last, Cupid is a reindeer who represents the loving. He is irresistible charm wins the hearts of everyone around"
+#print(reindeer_introduction)
+print("Who will be your companion? ")
 
 reindeer_choice = int(input("1.Rudolph, 2.Vixen, 3.Cupid (Enter 1, 2 or 3): "))
 while True:
@@ -45,7 +47,7 @@ while True:
         reindeer_id = 2003
         break
     else:
-        reindeer_choice = int(input("Invalid choice. 1.Rudolph, 2.Vixen, 3.Cupid (1/2/3) "))
+        reindeer_choice = int(input("Invalid choice. Please choose again! 1.Rudolph, 2.Vixen, 3.Cupid  (Enter 1, 2 or 3): "))
 
 # cập nhật player_name và reindeer_id vào bảng player
 
@@ -64,7 +66,7 @@ cursor = connection.cursor()
 cursor.execute(sql3)
 connection.commit()
 
-helsinki_welcome = "Hello Helsinki nek"
+helsinki_welcome = "Welcome to Helsinki Airport-here is your starting location on your exciting journey!\n And you have 100 letters in your backpack. Please Keep track of your available letters. The number of letters might affect your win!"
 print(helsinki_welcome)
 current_airport = 1001
 sql3 = f"UPDATE player SET letter_count = (SELECT letter_change FROM airport WHERE airport_id = 1001) WHERE player_id = '{player_id}'"
