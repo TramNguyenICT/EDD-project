@@ -28,27 +28,28 @@ connection.commit()
 def print_normal(string):
     print(Fore.WHITE+Style.RESET_ALL+string)
 
-game_intro = ("Welcome to ELF DELIVERY DASH! 🧝🏻🧝🏻🧝🏻\n"
+game_intro = ("🧝🏻🧝🏻🧝🏻 Welcome to ELF DELIVERY DASH! 🧝🏻🧝🏻🧝🏻\n"
               "You’re the fastest elf, and Santa’s counting on you to deliver 100 letters from children around the world.\n"
-              "But it won’t be easy! As you travel across different Nordic airports, tricky challenges and the sneaky Grinch will try to stop you.\n"
-              "Some challenges based on real world facts, others… well, let’s just say you’ll need a sense of humor.\n"
-              "Can you make it back to Santa with all 100 letters or even more and save Christmas?")
+              "⚠️ But it won’t be easy ⚠️\n"
+              "As you travel across different Nordic airports, tricky challenges and the sneaky Grinch will try to stop you.\n"
+              "Some challenges based on real world facts, others… well, let’s just say you’ll need a sense of humor 😜\n"
+              "Can you make it back to Santa with all 100 letters or even more and save Christmas 🎄?")
 print(Fore.YELLOW + game_intro)
 print_normal("Press any key to start the game!")
 input()
 
-print("What is your elf name?")
+print("What is your elf name 🧝🏻?")
 player_name = input("Type your elf name here: ")
 
-reindeer_instruction = ("Surprise! You won't be alone on this adventure!\n"
-                        "It's time to choose a reindeer - your trusty companion!\n"
-                        "Each reindeer has its own special ability, useful for specific airports along the way!")
+reindeer_instruction = (f"Surprise! You won't be alone on this adventure, {player_name}!\n"
+                        f"It's time to choose a reindeer 🦌 - your trusty companion!\n"
+                        f"Each reindeer has its own special ability, useful for specific airports along the way!")
 print(Fore.YELLOW + reindeer_instruction)
 print_normal("Let's get to know our reindeers by pressing ENTER!")
 input()
-each_reindeer_introduction=("Rudolph: the world famous reindeer, and everyone recognizes him!\n"
-                            "Vixen: a super intelligent reindeer who's great with all things logical and linguistic\n"
-                            "Cupid: the reindeer of love, with a charm that wins the hearts of everyone around")
+each_reindeer_introduction=("💚 Rudolph: the world famous reindeer, and everyone recognizes him!\n"
+                            "🩵 Vixen: a super intelligent reindeer who's great with all things logical and linguistic\n"
+                            "🩷 Cupid: the reindeer of love, with a charm that wins the hearts of everyone around")
 print(Fore.YELLOW + each_reindeer_introduction)
 
 print_normal("Who will be your companion?")
@@ -57,20 +58,21 @@ reindeer_choice = input("1. Rudolph\n2. Vixen\n3. Cupid\nEnter 1, 2 or 3: ")
 while True:
     if reindeer_choice == "1":
         reindeer_id = 2001
-        print("You choose Rudolph!")
+        print(Fore.YELLOW + "You choose Rudolph!")
         break
     elif reindeer_choice == "2":
         reindeer_id = 2002
-        print("You choose Vixen!")
+        print(Fore.YELLOW + "You choose Vixen!")
         break
     elif reindeer_choice == "3":
         reindeer_id = 2003
-        print("You choose Cupid!")
+        print(Fore.YELLOW + "You choose Cupid!")
         break
     else:
         reindeer_choice = input("Invalid choice. Please choose again! 1.Rudolph, 2.Vixen, 3.Cupid  (Enter 1, 2 or 3): ")
 
-print(Fore.YELLOW + f"Alright {player_name}, let's begin your journey!")
+print(Fore.YELLOW + f"Alright {player_name}, let's begin your adventure by hitting ENTER!")
+input()
 print_normal("--------------------------------------------------------------------------------------------------------")
 
 # cập nhật player_name và reindeer_id vào bảng player
@@ -90,7 +92,8 @@ cursor = connection.cursor()
 cursor.execute(sql4)
 connection.commit()
 
-helsinki_welcome = ("Welcome to Helsinki-Vantaa Airport! This is the starting point for your exciting journey!\n"
+helsinki_welcome = ("🚩Welcome to Helsinki-Vantaa Airport!🚩\n"
+                    "This is the starting point for your exciting journey!\n"
                     "You've got 100 letters in your bag, so keep track of them!\n"
                     "The number of letters is the key to your victory!")
 print(Fore.LIGHTMAGENTA_EX + helsinki_welcome)
@@ -300,14 +303,15 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
 
     if airport_id == 1004:
-        print("What's the English equivalent of 'Opiskelija'?")
+        print("Let's test your Finnish language sine your're in Finland!\n"
+              "What's the English equivalent of 'Opiskelija'?")
         a1004 = input('Opiskelija means: ').lower().strip()
         if a1004 == 'student':
             print(f"Somebody knows their Finnish! You got {letter_change} letters!")
             letter_count += letter_change
 
         else:
-            print("Not really, you lose 2 letters!")
+            print("Not really, you lose 2 letters for not stepping up in your Finnish language skill!")
             letter_count -= letter_change
 
     if airport_id == 1005:
@@ -332,10 +336,11 @@ def airport_quiz(airport_id):
         print("Let's rearrange the letters of these English words so that they still have meanings:\n"
               "LISTEN, RACE, CINEMA")
         if reindeer_id == 2002:
-            print(Back.YELLOW + Fore.RED + "Hi, it's me, Vixen - your reindeer!")
-            print(Back.YELLOW + Fore.RED +"I can help you with this!")
-            print(Back.YELLOW + Fore.RED +"I have a close friend, he is a care iceman but he is a bit silent.")
-            print(Back.YELLOW + Fore.RED +"That's the hint. Good luck")
+            print(Back.YELLOW + Fore.BLACK +"Hi, it's me, Vixen - your reindeer!")
+            print(Back.YELLOW + Fore.BLACK +"I can help you with this!")
+            print(Back.YELLOW + Fore.BLACK +"I have a close friend, he is a care iceman but he is a bit silent.")
+            print(Back.YELLOW + Fore.BLACK +"That's the hint. Good luck")
+            print(Style.RESET_ALL)
         a1007a = input("LISTEN--> ").lower().strip()
         a1007b = input("RACE--> ").lower().strip()
         a1007c = input("CINEMA--> ").lower().strip()
@@ -350,10 +355,10 @@ def airport_quiz(airport_id):
         a1008 = input("Can you guess what is the largest living organism on Earth?\n"
                       "Type your answer here: ").lower().strip()
         if a1008 == 'mushroom':
-            print(f"Bravo! You got {letter_change} letters!")
+            print(f"Bravo mushroom expert 🍄🍄! You got {letter_change} letters!")
             letter_count += letter_change
         else:
-            print(f"Sorry, {letter_change} letters are taken from your bag! The answer is mushroom!")
+            print(f"Sorry, {letter_change} letters are taken from your bag! The answer is mushroom 🍄!")
             letter_count -= letter_change
 
     if airport_id == 1009:
@@ -365,10 +370,10 @@ def airport_quiz(airport_id):
         a1010 = input("A. It has a sea-facing runway\nB. It operates only at night.\nC. It has a cold weather laboratory for aircraft\nD. It uses solar-powered control towers\n"
                       "Type A,B,C or D: ").lower().strip()
         if a1010 == 'c':
-            print(f"You are correct! You get more {letter_change} letters.")
+            print(f"You are correct ❄️ You get more {letter_change} letters.")
             letter_count+=letter_change
         elif a1010 == 'a' or a1010 == 'b' or a1010=='d':
-            print("Not quite! The answer is C: It has a cold weather laboratory for aircraft.")
+            print("Not quite! The answer is C: It has a cold weather laboratory for aircraft ❄️")
             letter_count-=letter_change
         else:
             print("Hmm... that doesn't seem like a valid choice. Let's keep moving!")
@@ -381,58 +386,60 @@ def airport_quiz(airport_id):
         letter_count += letter_change
 
     if airport_id == 1013:
-        print("Phew! This airport is challenge-free! You can move to the next airport.")
+        print("Phew! This airport is challenge-free 👏 You can move to the next airport.")
 
     if airport_id == 1014:
         print("You meet a poor girl selling matches on the street. What would you do?")
         answer1060 = input("A. Ignore here\nB. Buy all the matches\nC. Share some food with her \nType A,B or C\n").lower().strip()
         if answer1060 in ["b", "c"]:
-            print(f"You have such a warm heart. Here are your {letter_change} letters.")
+            print(f"You have such a warm heart 💗 Here are your {letter_change} letters.")
             letter_count += letter_change
         else:
-            print(f"Don't be so cold-hearted. You lost {letter_change} letters for not helping.")
+            print(f"Don't be so cold-hearted 💔 You lost {letter_change} letters for not helping.")
             letter_count -= letter_change
 
     if airport_id == 1015:
         print("I am an odd number. But if you take away a letter from my name, I will become even. What am I?")
         a1015 = input("I am ").lower().strip()
         if a1015 == 'seven' or a1015 == '7':
-            print(f"Congratulations, smart one! You got {letter_change} letters!")
+            print(f"Congratulations, smart one 😎 You got {letter_change} letters!")
             letter_count += letter_change
         else:
             print(f"Sorry, the answer is 7 (seven). You've just lost {letter_change} letters!")
             letter_count -= letter_change
 
     if airport_id == 1016:
-        print("Yikes! You just lost 50 letters at this airport for some reasons. How unfair!")
+        print("Yikes! You just lost 50 letters at this airport for some reasons. How unfair 😡\n"
+             "Let's keep moving so you can collect more!")
         letter_count -= letter_change
 
         if reindeer_id == 2001:
-            print(Back.YELLOW + Fore.RED +'Citizens:"Wait a minute, is that RUDOLPH?????"\n'
-                  'We are your biggest fans!\n'
+            print(Back.YELLOW + Fore.BLACK +'Citizens:"Wait a minute, is that RUDOLPH??? 😮😮😮"\n'
+                  'We are your biggest fans 🤩🤩🤩\n'
                   'We’ll help you get your letters back!')
-            print("Press Enter for the citizens to help Rudolph")
+            print(Back.YELLOW + Fore.BLACK +"Press Enter for the citizens to help Rudolph")
             input()
-            print(Back.YELLOW + Fore.RED +f'Yay, here is your {letter_change} letters.\n'
+            print(Back.YELLOW + Fore.BLACK +f'Yay, here is your {letter_change} letters.\n'
                   'Goodbye, Rudolph. Have a nice trip!')
+            print(Style.RESET_ALL)
             letter_count += letter_change
 
     if airport_id == 1017:
-        print("Alert!!! Your letters have just magically doubled! What a nice day to be an elf!")
+        print("Alert!!! Your letters have just magically doubled 😍 What a nice day to be an elf!")
         letter_count *= letter_change
 
     if airport_id == 1018:
         print("Do you like chocolate? 🍫")
         a1018 = input("Type 'Yes' or 'No':\n ").lower().strip()
         if a1018 == 'yes':
-            print("You're off to explore the magical Chocolate Factory (just like Charlie and the Chocolate Factory).\n"
+            print("You're off to explore the magical Chocolate Factory ✨ (just like Charlie and the Chocolate Factory)!\n"
                   f"It cost you {letter_change} letters but it was super fun!.")
             letter_count -= letter_change
         if a1018 == 'no':
-            print("Boring! But hey, let's go to the next airport instead!")
+            print("Boring 🥱 But hey, let's go to the next airport instead!")
 
     if airport_id == 1019:
-        print("A sneaky elf who is also on a mission steals your bag!\n"
+        print("A sneaky elf who is also on a mission steals your bag 🧝‍♀️😈\n"
               "Press Enter to go find your bag!")
         input()
         print("You found it! But half of your letters is already gone! So rude! Let's move out of here!")
@@ -455,16 +462,16 @@ def airport_quiz(airport_id):
               "Let's fill in the lyrics of their song Dancing Queen to gain 5 letters!\n"
               "Press Enter to see the lyrics")
         input()
-        print("You can dance, you can jive\n"
-              "Having the time of your life\n"
-              "Ooh, see that girl, watch that scene\n"
-              "_____________ the dancing queen")
+        print("You can dance, you can jive 🎵\n"
+              "Having the time of your life 🎵\n"
+              "Ooh, see that girl, watch that scene 🎵\n"
+              "_____________ the dancing queen 🎵")
 
         print("Choose the correct lyrics from the following options:")
         print("A. Dancing\nB. Singing\nC. Digging")
         answer1021 = input("Enter the correct choice (A, B, or C)\n").lower().strip()
         if answer1021 == "c":
-            print(f"Correct! You win {letter_change} letters!")
+            print(f"Correct 👏 You win {letter_change} letters!")
             letter_count += letter_change
         elif answer1021 in ["a", "b"]:
             print("Oops! The correct answer is 'Digging the dancing queen'. Better luck next time!")
@@ -473,24 +480,24 @@ def airport_quiz(airport_id):
 
 
     if airport_id == 1022:
-        print("You get 1 shot. Try to hit the bullseye (score 10)!\n"
-              "Press Enter to shoot!")
+        print("You get 1 shot. Try to hit the bullseye (score 10) 🎯!\n"
+              "Press Enter to shoot 🏹")
         answer1022 = random.randint(0, 10)
         input()
-        print(f"You hit a {answer1022}!\n"
+        print(f"You hit a {answer1022} 🎉\n"
               f"So you get {answer1022} more letters!")
         letter_count += answer1022
 
 
     if airport_id == 1023:
-        print("Have you ever watch movie Midsommar from Sweden?")
+        print("Have you ever watch movie Midsommar from Sweden 🌻?")
         print("A. Yes\nB. No")
         answer1023 = input("Enter your choice (A or B)\n").lower().strip()
         if answer1023 == "a":
-            print(f"Here is {letter_change} letters for the traumatic experience lol")
+            print(f"Here is {letter_change} letters for the traumatic experience lol 😆")
             letter_count += letter_change
         elif answer1023 == "b":
-            print("Good, do not watch! You don't miss out anything! Let's move on!")
+            print("Good, do not watch ❌ You don't miss out anything! Let's move on!")
         else:
             print("Hey, there are only A and B to choose! No letters for you!")
 
@@ -506,18 +513,18 @@ def airport_quiz(airport_id):
         else:
             print(f"You chose {answer1024}. We chose {computer_choice}.")
             if answer1024 == computer_choice:
-                print("It's a draw! To the next destination!")
+                print("It's a draw 🤝 To the next destination!")
             elif (answer1024 == "rock" and computer_choice == "scissors") or \
                     (answer1024 == "scissors" and computer_choice == "paper") or \
                     (answer1024 == "paper" and computer_choice == "rock"):
-                print(f"You win! You gain {letter_change} letters!")
+                print(f"You win 👏 You gain {letter_change} letters!")
                 letter_count += letter_change
             else:
-                print(f"You lose! You lose {letter_change} letters!")
+                print(f"You lose 😜 You lose {letter_change} letters!")
                 letter_count -= letter_change
 
     if airport_id == 1025:
-        print("Do you know which was an important measurement unit proposed by a famous Swedish physicist?")
+        print("Do you know which was an important measurement unit proposed by a famous Swedish physicist 🧐?")
         print("A. ampere (electric current)\nB. degree celsius (temperature)\nC. kelvin (thermodynamic temperature)")
 
         answer1025 = input("Enter the correct choice (A, B, or C)\n").lower().strip()
@@ -535,21 +542,18 @@ def airport_quiz(airport_id):
 
     if airport_id == 1026:
         print("Did you know Swedish entrepreneur Alfred Nobel left most of his fortune to create the Nobel Prize?")
-        print("Which of the following is NOT a Nobel Prize category?")
+        print("Which of the following is NOT a Nobel Prize category 🧐?")
         print(f"A. Physics\nB. Mathematics\nC. Chemistry")
         answer1026 = input("Enter the correct choice (A, B, or C)\n").lower().strip()
 
         if answer1026 in ["a", "c"]:
-            print(f"Sorry it's incorrect! The answer is Mathematics. You'll lose {letter_change} letters!")
+            print(f"Sorry it's incorrect ❌ The answer is Mathematics. You'll lose {letter_change} letters!")
             letter_count += letter_change
         elif answer1026 == "b":
-            print(f"Correct! You gain {letter_change} letters!")
+            print(f"Correct ✅ You gain {letter_change} letters!")
             letter_count += letter_change
         else:
             print("Invalid choice. Let's go to next destination!")
-
-    # 1027
-    # find a box
 
     if airport_id == 1027:
         print("Press Enter to open")
@@ -557,36 +561,33 @@ def airport_quiz(airport_id):
         print(f"You got {letter_change} extra letters!")
         letter_count += letter_change
 
-    # 1028
-    # icehotel
-
     if airport_id == 1028:
-        print("You come across the coolest ice hotel (pun totally intended)!")
+        print("You come across the coolest ice hotel 🧊❄️ (pun totally intended)!")
         print("How about staying the night?\n"
               "Press Enter to check in!")
         input()
-        print(f"It cost you {letter_change} letters but it was so cooool (yes, another pun!)!")
+        print(f"It cost you {letter_change} letters but it was so cooool 😎 (yes, another pun!)!")
         letter_count -= letter_change
 
     if airport_id == 1029:
-        print("You are a bit hungry. How about some delicious Swedish meatballs at IKEA?")
-        print("Press Enter to head over there and grab a bite!")
+        print("You are a bit hungry 😟 How about some delicious Swedish meatballs at IKEA?")
+        print("Press Enter to head over there and grab a bite 🍴!")
         input()
         print(f"It was yummy and you spent {letter_change} letters for the food!")
         letter_count -= letter_change
 
     if airport_id == 1030:
         print("Meoooooooow!\n"
-      "Is that a cat I see? 🐱")
+              "Is that a cat I see? 🐱")
         print("Do you want to pet it?")
 
         answer1030 = input("Type Yes or No: \n").lower().strip()
         if answer1030 == "yes":
-            print("You got bitten hoooooman!\n"
+            print("You got bitten hoooooman 😈!\n"
                   f"The cat takes {letter_change} letters and runs away!")
             letter_count -= letter_change
         elif answer1030 == "no":
-            print("Boring! The cat rolls his eyes and run away!")
+            print("Boring 🥱 The cat rolls his eyes and run away!")
         else:
             print("Invalid choice. No letters for you!")
 
@@ -596,50 +597,44 @@ def airport_quiz(airport_id):
         answer1031 = input("Type your guess here: ").lower().strip()
 
         if answer1031 == "tooth":
-            print("Wow such a genius!\n"
+            print("Wow such a genius 🦷!\n"
                   f"The elf gifts you {letter_change} letters!")
             letter_count += letter_change
         else:
-            print("The answer is 'Tooth'! But I guess that’s too tough for you - said the elf")
+            print("The answer is 'Tooth' 🦷! But I guess that’s too tough for you - said the elf")
             print("He smirks and says, 'Good luck next time, genius!'")
 
-    # 1032
-    # envelope
-
     if airport_id == 1032:
-        print("There's an envelope slipped under your feet!")
+        print("There's an envelope slipped under your feet 💌!")
         print("Press Enter to open")
         input()
         print("Hey Santa,\n"
-              "I hate Christmas. I mean A LOT!\n"
-              "        -The Grinch")
+              "I kinda hate Christmas 🤢 No, I mean A LOTTT!\n"
+              "                          - Grinch")
         print("Well somebody is too grumpy! Let's continue your journey!")
 
-    # 1033
-    # mariah carey
-
     if airport_id == 1033:
-        print("Who is she?")
+        print("Who is she 👸?")
         answer1028 = input("Type her name here: ").lower().strip()
         if answer1028 == "mariah carey":
-            print(f"Very cultured, very demure! Here is {letter_change} letters for you!")
+            print(f"Very cultured, very demure 💅 Here is {letter_change} letters for you!")
             letter_count += letter_change
         else:
-            print("OMG you don't know Mariah Carey? It's okay not everyone needs to know pop culture.")
+            print("OMG you don't know Mariah Carey 😲 Just kidding, not everyone needs to know pop culture.")
 
     if airport_id == 1034:
         print("Fun fact: Dynamite was invented by Swedish chemist Alfred Nobel!")
         print("Hit Enter to see what's next...")
         input()
-        print("Wait... Is that a stick of dynamite?!")
-        print("Press Enter to make a quick escape!")
+        print("Wait... Is that a stick of dynamite 🧨?!")
+        print("Press Enter to make a quick escape 🏃‍♂🏃‍♂️💨!")
         input()
-        print("Oh noooooo you drop a quarter of your letters on the way out! Let's continue and collect more letters!")
+        print("Oh noooooo you drop A QUARTER of your letters on the way out! Let's continue and collect more letters!")
         letter_count -= (letter_count // letter_change)
 
     if airport_id == 1035:
-        print("Whoa! Those reindeer are all over the place!")
-        print("Oh no! You just got into a reindeer accident :(")
+        print("Whoa! Those reindeer are all over the place 🦌🦌🦌!")
+        print("Oh no! You just got into a reindeer accident 🤕")
         print("Hit Enter to get back up...")
         input()
         print(f"Yikes! A reindeer just took {letter_change} letters from your bag in this chaos! Let's move on!")
@@ -650,7 +645,7 @@ def airport_quiz(airport_id):
               "Do you take off your shoes when entering the house?")
         answer1036 = input("Type here Yes or No to answer\n").lower().strip()
         if answer1036 == "yes":
-            print("Good job!\n"
+            print("Good job 👍\n"
                   "In Icelandic culture, it's customary for guests to remove their shoes when entering a home.")
         elif answer1036 == "no":
             print("In Icelandic culture, it's customary for guests to remove their shoes when entering a home.")
@@ -663,7 +658,7 @@ def airport_quiz(airport_id):
 
     if airport_id == 1037:
         print("More than 10% of Iceland is covered by glaciers\n"
-              "And of course you just took an unexpected slide on one of them :(")
+              "And of course you just took an unexpected slide on one of them 🥶")
         print("Press Enter to pick yourself up")
         input()
 
@@ -672,7 +667,7 @@ def airport_quiz(airport_id):
 
     if airport_id == 1038:
         print("In Icelandic folklore, trolls are a big deal - just like you, the greatest elf!\n"
-              "You walk around and meet a troll!\n"
+              "You walk around and meet a troll 🧌!\n"
               "Do you want to chat with him?")
         answer1038 = input("Type here Yes or No to answer\n").lower().strip()
         if answer1038 == "yes":
@@ -685,13 +680,13 @@ def airport_quiz(airport_id):
 
 
     if airport_id == 1039:
-        print("He wants to tell you a joke!")
+        print("He wants to tell you a joke ☃️!")
         print("Press Enter to hear: ")
         input()
         print("Where does Christmas (25th Dec) come before Thanksgiving (fourth Thursday in November)?")
         answer1039 = input("Just give a guess here: ").lower().strip()
         print("The answer is IN DICTIONARY you silly!")
-        print(f"Okay, sorry for the jokes, here is {letter_change} letters for you - said the snowman")
+        print(f"Okay, sorry for the jokes, here is {letter_change} letters for you - said the snowman ☃️")
         letter_count += letter_change
 
     if airport_id == 1040:
@@ -710,7 +705,7 @@ def airport_quiz(airport_id):
         letter_count += letter_change
 
     if airport_id == 1042:
-        print(f"Time for a quick riddle! Get it right, and you’ll get {letter_change} letters!")
+        print(f"Time for a quick riddle 🤔 Get it right, and you’ll get {letter_change} letters!")
         print("What are two things you can never eat for breakfast?\n"
               "Type your answer below: ")
         answer1042_1st = input("First thing is: ").lower().strip()
@@ -720,22 +715,22 @@ def airport_quiz(airport_id):
             print(f"So smart! We hope you always eat well! You got {letter_change} more letters!")
             letter_count += letter_change
         else:
-            print("Not the answer we were looking for! They are 'LUNCH' and 'Dinner'.\n"
+            print("Not the answer we were looking for! They are 'LUNCH' and 'DINNER'.\n"
                   "No extra letter this time!")
 
     if airport_id == 1043:
         print("🐶🐱 The ultimate question: Are you a dog person or a cat person?")
         answer1043 = input("A. Dog person\nB. Cat person\n"
                            "Type A or B to answer\n").lower().strip()
-        print(f"You know what? We love all pets here! Here are {letter_change} letters just for sharing your thoughts!")
+        print(f"You know what? We love all pets here 🥰 Here are {letter_change} letters just for sharing your thoughts!")
         letter_count += letter_change
 
 
     if airport_id == 1044:
-        print("Yay! We have a new visitor in da town!")
+        print("Yay! We have a new visitor in da town 🎉")
         print(f"Looks like you were too busy sightseeing and dropped {letter_change} letters!")
         letter_count -= letter_change
-        print("Take your time and explore the city 'cause you've lost the letters anyway!")
+        print("Take your time and explore the city 'cause you've lost the letters anyway 😏")
 
     if airport_id == 1045:
         print("Quick quiz! Major General Sir Nils Oval III is...")
@@ -751,28 +746,28 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
             print(f"Oops! You’ve lost {letter_change} letters.")
         print(
-            "Major General Sir Nils Oval III, Baron of the Bouvet Islands, is a king penguin who resides in Edingurgh Zoo, Scotland.\n"
+            "Major General Sir Nils Oval III, Baron of the Bouvet Islands, is a king penguin 🐧 who resides in Edingurgh Zoo, Scotland.\n"
             "He is the mascot and colonel-in-chief of the Norwegian King's Guard.")
 
     if airport_id == 1046:
-        print("Quick geography quiz! Do you know what the second largest city in Norway is?")
+        print("Quick geography quiz 🌍 Do you know what the second largest city in Norway is?")
         answer1046 = input("Type your answer here: ").lower().strip()
         if answer1046 == "bergen":
-            print("That’s right, you're standing in it! You just earned 5 letters!")
+            print("That’s right, you're standing in it 😜 You just earned 5 letters!")
             letter_count += letter_change
         else:
-            print(f"Hey you're literally here in Bergen! The reindeer is confused, and you lost {letter_change} letters for that!")
+            print(f"Hey you're literally here in Bergen 🤭 The reindeer is confused, and you lost {letter_change} letters for that!")
             letter_count -= letter_change
 
     if airport_id == 1047:
         print("🐣 Here’s a classic brain teaser: Which came first, the chicken or the egg?")
         answer1047 = input("Type your answer here: ").lower().strip()
-        print("Just kidding! I don't really care about the answer!")
+        print("Just kidding! I don't really care about the answer 🫣")
         print(f"Here is {letter_change} letters because you deserve them. See you later!")
         letter_count += letter_change
 
     if airport_id == 1048:
-        print("Do you know which type of sushi comes from Norway?\n"
+        print("Do you know which type of sushi comes from Norway 🍣?\n"
               "A. Salmon\nB. Tuna\nC. Shrimp")
         answer1048 = input("Type A, B or C to answer\n").lower().strip()
         if answer1048 == "a":
@@ -781,23 +776,23 @@ def airport_quiz(airport_id):
         elif answer1048 in ["b", "c"]:
             letter_count -= letter_change
             print(f"Wrong! You lost {letter_change} letters")
-        print("It's Salmon sushi. The Norwegians invented this dish back in the 1980s.")
+        print("It's Salmon sushi 🍣 The Norwegians invented this dish back in the 1980s.")
 
     if airport_id == 1049:
-        print("Hmm...")
-        print("Hmm...")
+        print("Hmm... 🤔")
+        print("Hmm... ")
         print("Hmm...")
         print("Hmm...")
         print("Press any key to continue")
         input()
-        print("You're still here?")
+        print("You're still here 🤨?")
         print("There's nothing in this airport! Go ahead! Bye bye!")
 
     if airport_id == 1050:
-        print("What travels the world while stuck in one spot?")
+        print("What travels the world while stuck in one spot 🌏?")
         answer1050 = input("Type your guess here: ").lower().strip()
         if answer1050 in ["stamp", "a stamp", "the stamp", "stamps", "the stamps"]:
-            print(f"Brilliant! You are so smart! You got {letter_change} more letters!")
+            print(f"Brilliant!  You are so smart! You got {letter_change} more letters!")
             letter_count += letter_change
         else:
             print("It's the stamps!")
@@ -805,57 +800,57 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
 
     if airport_id == 1051:
-        print("Ooooooops! You just stepped on a LEGO block! That's must be so painful!\n"
-              f"You lost {letter_change} letters to call an ambulance and go to the hospital!")
+        print("Ooooooops! You just stepped on a LEGO block ☠️ That's must be so painful!\n"
+              f"You lost {letter_change} letters to call an ambulance and go to the hospital 🚑!")
         letter_count -= letter_change
         print("Just so you know, you’re in Denmark, the land where LEGOs were born!")
 
     if airport_id == 1052:
         print("At this airport we have a question for you!")
-        print("Which one is the highest mountain in Denmark?\n"
+        print("Which one is the highest mountain in Denmark 🏔️?\n"
               "A.Aarhus\nB.Bergen\nC.Thisted")
         answer1052 = input("Type A, B or C to answer\n").lower().strip()
-        print("Haha! Nice try, but Denmark has no mountains! Just lots of flat land and delicious pastries!")
+        print("Haha! Nice try, but Denmark has no mountains 👻 Just lots of flat land and delicious pastries!")
         print("Let's continue your journey!")
 
     if airport_id == 1053:
         sql_for_reindeer_2003 = f"SELECT letter_change_reindeer from reindeer where reindeer_id = 2003"
         cursor.execute(sql_for_reindeer_2003)
         letter_change_reindeer = cursor.fetchone()
-        print("You can't resist the famous Danish cookies!\n"
+        print("You can't resist the famous Danish cookies 🍪🍪🍪!\n"
               f"You take a bite... and those cookies cost you {letter_change} letters!")
         letter_count -= letter_change
         if reindeer_id == 2003:
-            print(Back.YELLOW + Fore.RED +"Oh wait, look who it is! Cupid has graced us with his adorable presence! 💘")
-            print(
-                Back.YELLOW + Fore.RED +"Did you know Denmark was the first country to legalise same-sex unions in 1989? Love truly has no bounds!")
-            print(Back.YELLOW + Fore.RED +f"Thanks to Cupid, you’ll earn {letter_change} more letters in celebration of love!")
+            print(Back.YELLOW + Fore.BLACK +"Oh wait, look who it is 😮 Cupid - your reindeer - has graced us with his adorable presence! 💘")
+            print(Back.YELLOW + Fore.BLACK +"Did you know Denmark was the first country to legalise same-sex unions in 1989 🏳️‍🌈? Love truly has no bounds!")
+            print(Back.YELLOW + Fore.RED +f"Thanks to Cupid, you’ll earn {letter_change} more letters in celebration of love 💖!")
+            print(Style.RESET_ALL)
             letter_count += letter_change_reindeer
 
     if airport_id == 1054:
-        print("What do you actually find at the end of every rainbow?")
+        print("What do you actually find at the end of every rainbow 🌈?")
         answer1054 = input("Type your answer here: ").lower().strip()
         if answer1054 == "w" or answer1054 == "letter w":
-            print(f"Brilliant! You got {letter_change} letters.")
+            print(f"Brilliant 🎉 You got {letter_change} letters.")
             letter_count += letter_change
         else:
-            print(f"It's the letter W! You lost {letter_change} letters.")
+            print(f"It's the letter W 😜 You lost {letter_change} letters.")
             letter_count -= letter_change
 
     if airport_id == 1055:
-        print(f"Whoops! Your reindeer spotted a squirrel and took off like a rocket!\n"
+        print(f"Whoops! Your reindeer spotted a squirrel 🐿️ and took off like a rocket!\n"
               f"You lost {letter_change} of your letters along the way!")
         letter_count -= letter_change
 
     if airport_id == 1056:
-        print("This airport is on maintenance, sorry. Keep continuing your journey!")
+        print("🚧 This airport is on maintenance, sorry 🚧 Keep continuing your journey!")
 
     if airport_id == 1057:
-        print("Is Cinderella a story by Danish writer Hans Christian Andersen?")
+        print("Is Cinderella 🥿 a story by Danish writer Hans Christian Andersen?")
         answer1057 = input("Type here Yes or No to answer: ").lower().strip()
         if answer1057 == "no":
             print("That's right! Cinderella is a story by the Brothers Grimm.\n"
-                  "Hans' notable works includes The Little Mermaid and Snow White")
+                  "Hans Andersen's famous works includes The Little Mermaid 🧜‍♀️ and Snow White ❄️")
             letter_count += letter_change
         elif answer1057 == "yes":
             print(f"Wrong! Cinderella is indeed a story by the Brothers Grimm. You lost {letter_change} letters.")
@@ -865,23 +860,23 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
 
     if airport_id == 1058:
-        answer1058 = input("Fill in the blank: Finland has Sisu, and Denmark has...").lower().strip()
+        answer1058 = input("🗨️ Fill in the blank: Finland has Sisu, and Denmark has...").lower().strip()
         if answer1058 == "hygge":
             print(f"Correct! You've gained {letter_change} more letters")
             letter_count += letter_change
         else:
             print(f"Incorrect! You've lost {letter_change} letters")
             letter_count -= letter_change
-        print("Hygge is a word in Danish that describes a cozy, contented mood evoked by comfort and conviviality.")
+        print("Hygge is a word in Danish that describes a cozy, contented mood evoked by comfort and conviviality 🤍")
 
     if airport_id == 1059:
-        print("Where is an ocean with no water?")
+        print("Where is an ocean with no water 🌊?")
         answer1059 = input("Type your guess here: ").lower().strip()
         if answer1059 == "map" or answer1059 == "the map" or answer1059 == "on the map" or answer1059 == "in the map":
-            print(f"Brilliant! You are so smart! You got {letter_change} more letters!")
+            print(f"Brilliant 🗺️ You are so smart! You got {letter_change} more letters!")
             letter_count += letter_change
         else:
-            print("It's on the map!")
+            print("It's on the map 🗺️!")
             print(f"You lost {letter_change} letters.")
             letter_count -= letter_change
 
@@ -896,12 +891,13 @@ for i in range(1):
     current_airport = airport_direction()
     airport_quiz(current_airport)
     check_the_grinch(current_airport)
-    print("----------------------------------------------------------------------------------------------------------")
+    print_normal("--------------------------------------------------------------------------------------------------------------")
 
 #print the script that the map was lost
-map_lost_script = ("Oh no you've just dropped the map and you can't see the next airport that you are going through!\n"
+map_lost_script = ("Oh no❗❗❗\n"
+                   "You've just dropped the map and you can't see the next airport that you are going through!\n"
                    "From now on you can only go LEFT or RIGHT until you meet Santa again!")
-print(Back.MAGENTA + Fore.YELLOW + map_lost_script)
+print(Back.MAGENTA + Fore.BLACK + map_lost_script)
 
 #random 2 airports next to the goal
 sql19 = f"select airport_id from airport where is_finished = '0'"
@@ -914,7 +910,7 @@ airport_id_list.remove(airport_n_2)
 airport_n_1 = random.choice(airport_id_list)
 
 #player go through 2 airports next to the goal
-print_normal("Which way do you want to go next?")
+print(Fore.YELLOW + "Which way do you want to go next?")
 user_random_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
 while True:
     if user_random_choice == "l" or user_random_choice == "r":
@@ -925,9 +921,9 @@ while True:
 
 update_current_airport(player_id, airport_n_2)
 
-print("---------------------------------------------------------------------------------------------------------------")
+print_normal("---------------------------------------------------------------------------------------------------------------")
 
-print("Which way do you want to go next?")
+print(Fore.YELLOW + "Which way do you want to go next?")
 user_random_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
 while True:
     if user_random_choice == "l" or user_random_choice == "r":
@@ -937,7 +933,7 @@ while True:
         user_random_choice = input("Invalid choice! Type L for LEFT or R for RIGHT: ").lower().strip()
 update_current_airport(player_id, airport_n_1)
 
-print("---------------------------------------------------------------------------------------------------------------")
+print_normal("---------------------------------------------------------------------------------------------------------------")
 
 #player chose left or right (and it points to Rovaniemi)
 print("Which way do you want to go next?")
@@ -950,10 +946,10 @@ while True:
         
 #player reach the goal
 rova_script= ("✨ You've arrived at Rovaniemi, the magical home of Santa Claus! ✨\n"
-              "The air is filled with laughter, music, and the delightful scent of cinnamon!\n"
+              "🕯️ The air is filled with laughter, music, and the delightful scent of cinnamon! 🕯️\n"
               "Santa’s waiting for you, but wait... did you bring the letters?")
 print(Fore.LIGHTMAGENTA_EX + rova_script)
-print_normal("Let’s make Christmas magical! Press any key to give your letters to Santa Claus!")
+print_normal("Let’s make Christmas magical! Press any key to give your letters to Santa Claus 🎅!")
 input()
 update_current_airport(player_id, 1060)
 
@@ -967,16 +963,16 @@ else:
 sql20 = f"UPDATE player SET result = '{result}' WHERE player_id = '{player_id}'"
 cursor.execute(sql20)
 
-win_goal_intro = (f"You did it!\n"
+win_goal_intro = (f"You did it 🎉🎉🎉\n"
                   f"You delivered the total of {final_letter_count} letters to Santa!\n"
                   f"Christmas is saved, and Santa couldn’t be prouder of his fastest elf!\n"
-                  f"Thank you for playing ELF DELIVERY DASH, and have a great holiday!")
-lose_goal_intro = (f"Oh no...\n"
+                  f"Thank you for playing ELF DELIVERY DASH, and have a great holiday! 💖")
+lose_goal_intro = (f"Oh no... 😭😭😭\n"
                    f"You delivered the total of {final_letter_count} letters to Santa.\n"
                    f"The Grinch was just a little too sneaky, and a few letters slipped away.\n"
                    f"But Christmas isn’t over yet! There’s still time to try again.\n"
                    f"Santa believes in you, and next time, let's bring all the letters to him!"
-                   f"Thank you for playing ELF DELIVERY DASH, and have a great holiday!")
+                   f"Thank you for playing ELF DELIVERY DASH, and have a great holiday! 💖")
 
 if result == "Win":
     print(Back.MAGENTA + Fore.BLACK + win_goal_intro)
