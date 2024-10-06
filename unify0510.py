@@ -761,7 +761,7 @@ def airport_quiz(airport_id):
             print("That’s right, you're standing in it! You just earned 5 letters!")
             letter_count += letter_change
         else:
-            print("Hey you're literally here in Bergen! The reindeer is confused, and you lost 10 letters for that!")
+            print("Hey you're literally here in Bergen! The reindeer is confused, and you lost 5 letters for that!")
             letter_count -= letter_change
 
     if airport_id == 1047:
