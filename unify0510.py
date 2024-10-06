@@ -580,7 +580,7 @@ def airport_quiz(airport_id):
       "Is that a cat I see? 🐱")
         print("Do you want to pet it?")
 
-        answer1030 = input("Type Yes or No\n").lower().strip()
+        answer1030 = input("Type Yes or No: \n").lower().strip()
         if answer1030 == "yes":
             print("You got bitten hoooooman!\n"
                   f"The cat takes {letter_change} letters and runs away!")
