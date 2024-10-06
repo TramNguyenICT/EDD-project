@@ -393,8 +393,8 @@ def airport_quiz(airport_id):
         print("Phew! This airport is challenge-free 👏 You can move to the next airport.")
 
     if airport_id == 1014:
-        print("You meet a poor girl selling matches on the street. What would you do?")
-        answer1060 = input("A. Ignore here\nB. Buy all the matches\nC. Share some food with her \nType A,B or C\n").lower().strip()
+        print("You meet a poor girl selling matches on the street 👧. What would you do?")
+        answer1060 = input("A. Ignore her\nB. Buy all the matches\nC. Share some food with her \nType A,B or C\n").lower().strip()
         if answer1060 in ["b", "c"]:
             print(f"You have such a warm heart 💗 Here are your {letter_change} letters.")
             letter_count += letter_change
@@ -941,7 +941,7 @@ update_current_airport(player_id, airport_n_1)
 print_normal("---------------------------------------------------------------------------------------------------------------")
 
 #player chose left or right (and it points to Rovaniemi)
-print("Which way do you want to go next?")
+print(Fore.LIGHTYELLOW_EX + "Which way do you want to go next?")
 user_random_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
 while True:
     if user_random_choice == "l" or user_random_choice == "r":
