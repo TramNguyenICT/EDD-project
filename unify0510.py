@@ -710,7 +710,7 @@ def airport_quiz(airport_id):
         letter_count += letter_change
 
     if airport_id == 1042:
-        print("Time for a quick riddle! Get it right, nd you’ll get 5 letters!")
+        print("Time for a quick riddle! Get it right, and you’ll get 5 letters!")
         print("What are two things you can never eat for breakfast?\n"
               "Type your answer below: ")
         answer1042_1st = input("First thing is: ").lower().strip()
