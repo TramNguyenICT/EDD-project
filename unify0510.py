@@ -243,7 +243,7 @@ def grinch_quiz(challenge_id):
             letter_count -= letter_change_grinch
     if challenge_id == 6:
         print("What do I want to receive for Christmas?")
-        choice = input("A. A huge Christmas cake\nB. New Iphone 16\nC. New dogs clothes\nD. A Sweaters\n"
+        choice = input("A. A huge Christmas cake\nB. New Iphone 16\nC. New dogs clothes\nD. A Sweater\n"
                        "Type A,B,C or D: ")
         if choice == "c":
             print("I hate Christmas but Max, my dog, always has to be warm. You want to give him some, right?")
