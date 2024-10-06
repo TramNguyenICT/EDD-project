@@ -183,7 +183,8 @@ def grinch_quiz(challenge_id):
     letter_change_grinch_tuple = cursor.fetchall()
     letter_change_grinch = int(letter_change_grinch_tuple[0][0])
     letter_count = get_letter_count(player_id)
-    print("Hahaha, Grinch is here.")
+    
+    print(Fore.BLACK + Back.GREEN +"Hahaha, Grinch is here.")
     print("What a coincidence we met!")
     print("I have a challenge for you, little elf.")
     if challenge_id == 1:
@@ -253,6 +254,7 @@ def grinch_quiz(challenge_id):
                   "But perhaps Max, my dog, needs some more clothes to survive this winter.")
             print(f"I'm not happy with your answer. I will take {letter_change_grinch} letters from you.")
             letter_count -= letter_change_grinch
+    print(Style.RESET_ALL)
     update_letter_count(player_id, letter_count)
 
 def check_the_grinch(airport_id):
@@ -898,6 +900,7 @@ map_lost_script = ("Oh no❗❗❗\n"
                    "You've just dropped the map and you can't see the next airport that you are going through!\n"
                    "From now on you can only go LEFT or RIGHT until you meet Santa again!")
 print(Back.MAGENTA + Fore.BLACK + map_lost_script)
+print(Style.RESET_ALL)
 
 #random 2 airports next to the goal
 sql19 = f"select airport_id from airport where is_finished = '0'"
@@ -975,6 +978,6 @@ lose_goal_intro = (f"Oh no... 😭😭😭\n"
                    f"Thank you for playing ELF DELIVERY DASH, and have a great holiday! 💖")
 
 if result == "Win":
-    print(Back.MAGENTA + Fore.BLACK + win_goal_intro)
+    print(Back.GREEN + Fore.BLACK + win_goal_intro)
 else:
-    print(Back.CYAN + Fore.BLACK + lose_goal_intro)
+    print(Back.RED + Fore.BLACK + lose_goal_intro)
