@@ -233,7 +233,8 @@ def grinch_quiz(challenge_id):
             letter_count -= letter_change_grinch
     if challenge_id == 5:
         print("What is the name of my dog? ")
-        choice = input("A.Milo, B.Max, C.Rex, D.Leo").lower().strip()
+        choice = input("A.Milo, B.Max, C.Rex, D.Leo\n"
+                       "Type A, B, C or D: ").lower().strip()
         if choice == "b" or choice == "max":
             print(
                 f"Yes, the most adorable dog in the world is Max!!! I will give you {letter_change_grinch} letters just because I love Max!")
