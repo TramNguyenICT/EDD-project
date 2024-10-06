@@ -725,7 +725,7 @@ def airport_quiz(airport_id):
 
     if airport_id == 1043:
         print("🐶🐱 The ultimate question: Are you a dog person or a cat person?")
-        answer1043 = input("A. Dog person\n B. Cat person\n"
+        answer1043 = input("A. Dog person\nB. Cat person\n"
                            "Type A or B to answer\n").lower().strip()
         print(f"You know what? We love all pets here! Here are {letter_change} letters just for sharing your thoughts!")
         letter_count += letter_change
