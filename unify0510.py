@@ -942,7 +942,12 @@ print("-------------------------------------------------------------------------
 #player chose left or right (and it points to Rovaniemi)
 print("Which way do you want to go next?")
 user_random_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
-
+while True:
+    if user_random_choice == "l" or user_random_choice == "r":
+        break
+    else:
+        user_random_choice = input("Invalid choice! Type L for LEFT or R for RIGHT: ").lower().strip()
+        
 #player reach the goal
 rova_script= ("✨ You've arrived at Rovaniemi, the magical home of Santa Claus! ✨\n"
               "The air is filled with laughter, music, and the delightful scent of cinnamon!\n"
