@@ -901,7 +901,7 @@ for i in range(1):
 #print the script that the map was lost
 map_lost_script = ("Oh no you've just dropped the map and you can't see the next airport that you are going through!\n"
                    "From now on you can only go LEFT or RIGHT until you meet Santa again!")
-print(Fore.YELLOW + map_lost_script)
+print(Back.BLUE + Fore.YELLOW + map_lost_script)
 
 #random 2 airports next to the goal
 sql19 = f"select airport_id from airport where is_finished = '0'"
