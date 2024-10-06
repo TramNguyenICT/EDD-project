@@ -261,8 +261,9 @@ def check_the_grinch(airport_id):
     if grinch_airport == airport_id:
         grinch_quiz(grinch_challenge)
         letter_count = get_letter_count(player_id)
-        print(f"Currently, you have {letter_count} letters.")
-        print_normal("That was an unexpected interaction! Press ENTER to continue the journey. ")
+        print(Fore.CYAN +f"Currently, you have {letter_count} letters.")
+        print_normal("That was an unexpected interaction! Press ENTER to continue the journey.")
+        input()
 
 
 def airport_quiz(airport_id):
@@ -296,7 +297,8 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
 
     if airport_id == 1003:
-        a1003 = input("Why did two 4s skip lunch? Because they already ...?").lower().strip()
+        a1003 = input("Why did two 4s skip lunch? Because they already ...?\n"
+                     "Your answer is: ").lower().strip()
         if a1003 in ["8", "eight", "ate"]:
             print(f"Correct! You got {letter_change} letters!")
             letter_count += letter_change
@@ -317,10 +319,10 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
 
     if airport_id == 1005:
-        print("You’re in a Finnish forest and spot a polar bear! What should you do?")
+        print("You’re in a Finnish forest and spot a polar bear 🐻‍❄️ What should you do?")
         a1005 = input("A. Run for your life\nB. Play dead\nC. Try to make yourself look bigger\n"
                       "Type A, B or C: ").lower().strip()
-        print("HAHAHA! Good one, but there are no polar bears in the wild here! You get nothing!")
+        print("HAHAHA! Good one, but there are no polar bears in the wild here 🤣 You get nothing!")
 
     if airport_id == 1006:
         print("Ready to test your knowledge about the Northern Lights?")
@@ -629,7 +631,7 @@ def airport_quiz(airport_id):
         print("Hit Enter to see what's next...")
         input()
         print("Wait... Is that a stick of dynamite 🧨?!")
-        print("Press Enter to make a quick escape 🏃‍♂🏃‍♂️💨!")
+        print("Press Enter to make a quick escape 🏃‍♂💨!")
         input()
         print("Oh noooooo you drop A QUARTER of your letters on the way out! Let's continue and collect more letters!")
         letter_count -= (letter_count // letter_change)
