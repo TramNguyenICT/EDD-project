@@ -889,7 +889,7 @@ def airport_quiz(airport_id):
 
     # cập nhật letter_count
     update_letter_count(player_id,letter_count)
-    print(f"Currently, you have {letter_count} letters.")
+    print(Fore.CYAN + f"Currently, you have {letter_count} letters.")
 
 # players go through 10 first airport
 for i in range(1):
@@ -939,6 +939,10 @@ update_current_airport(player_id, airport_n_1)
 
 print("---------------------------------------------------------------------------------------------------------------")
 
+#player chose left or right (and it points to Rovaniemi)
+print("Which way do you want to go next?")
+user_random_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
+
 #player reach the goal
 rova_script= ("✨ You've arrived at Rovaniemi, the magical home of Santa Claus! ✨\n"
               "The air is filled with laughter, music, and the delightful scent of cinnamon!\n"
@@ -971,4 +975,4 @@ lose_goal_intro = (f"Oh no...\n"
 if result == "Win":
     print(Back.MAGENTA + Fore.BLACK + win_goal_intro)
 else:
-    print(Back.MAGENTA + Fore.BLACK + lose_goal_intro)
+    print(Back.CYAN + Fore.BLACK + lose_goal_intro)
