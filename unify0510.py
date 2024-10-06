@@ -851,7 +851,7 @@ def airport_quiz(airport_id):
         print("This airport is on maintenance, sorry. Keep continuing your journey!")
 
     if airport_id == 1057:
-        print("Is Cinderella a story a story by Danish writer Hans Christian Andersen?")
+        print("Is Cinderella a story by Danish writer Hans Christian Andersen?")
         answer1057 = input("Type here Yes or No to answer: ").lower().strip()
         if answer1057 == "no":
             print("That's right! Cinderella is a story by the Brothers Grimm.\n"
