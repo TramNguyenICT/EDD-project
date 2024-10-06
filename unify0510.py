@@ -332,10 +332,10 @@ def airport_quiz(airport_id):
         print("Let's rearrange the letters of these English words so that they still have meanings:\n"
               "LISTEN, RACE, CINEMA")
         if reindeer_id == 2002:
-            print("Hi, it's me, Vixen - your reindeer!")
-            print("I can help you with this!")
-            print("I have a close friend, he is a care iceman but he is a bit silent.")
-            print("That's the hint. Good luck")
+            print(Back.YELLOW + Fore.RED + "Hi, it's me, Vixen - your reindeer!")
+            print(Back.YELLOW + Fore.RED +"I can help you with this!")
+            print(Back.YELLOW + Fore.RED +"I have a close friend, he is a care iceman but he is a bit silent.")
+            print(Back.YELLOW + Fore.RED +"That's the hint. Good luck")
         a1007a = input("LISTEN--> ").lower().strip()
         a1007b = input("RACE--> ").lower().strip()
         a1007c = input("CINEMA--> ").lower().strip()
@@ -408,12 +408,12 @@ def airport_quiz(airport_id):
         letter_count -= letter_change
 
         if reindeer_id == 2001:
-            print('Citizens:"Wait a minute, is that RUDOLPH?????"\n'
+            print(Back.YELLOW + Fore.RED +'Citizens:"Wait a minute, is that RUDOLPH?????"\n'
                   'We are your biggest fans!\n'
                   'We’ll help you get your letters back!')
             print("Press Enter for the citizens to help Rudolph")
             input()
-            print(f'Yay, here is your {letter_change} letters.\n'
+            print(Back.YELLOW + Fore.RED +f'Yay, here is your {letter_change} letters.\n'
                   'Goodbye, Rudolph. Have a nice trip!')
             letter_count += letter_change
 
@@ -826,10 +826,10 @@ def airport_quiz(airport_id):
               f"You take a bite... and those cookies cost you {letter_change} letters!")
         letter_count -= letter_change
         if reindeer_id == 2003:
-            print("Oh wait, look who it is! Cupid has graced us with his adorable presence! 💘")
+            print(Back.YELLOW + Fore.RED +"Oh wait, look who it is! Cupid has graced us with his adorable presence! 💘")
             print(
-                "Did you know Denmark was the first country to legalise same-sex unions in 1989? Love truly has no bounds!")
-            print(f"Thanks to Cupid, you’ll earn {letter_change} more letters in celebration of love!")
+                Back.YELLOW + Fore.RED +"Did you know Denmark was the first country to legalise same-sex unions in 1989? Love truly has no bounds!")
+            print(Back.YELLOW + Fore.RED +f"Thanks to Cupid, you’ll earn {letter_change} more letters in celebration of love!")
             letter_count += letter_change_reindeer
 
     if airport_id == 1054:
