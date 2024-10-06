@@ -970,7 +970,8 @@ lose_goal_intro = (f"Oh no...\n"
                    f"You delivered the total of {final_letter_count} letters to Santa.\n"
                    f"The Grinch was just a little too sneaky, and a few letters slipped away.\n"
                    f"But Christmas isn’t over yet! There’s still time to try again.\n"
-                   f"Santa believes in you, and next time, let's bring all the letters to him!")
+                   f"Santa believes in you, and next time, let's bring all the letters to him!"
+                   f"Thank you for playing ELF DELIVERY DASH, and have a great holiday!")
 
 if result == "Win":
     print(Back.MAGENTA + Fore.BLACK + win_goal_intro)
