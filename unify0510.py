@@ -30,7 +30,7 @@ def print_normal(string):
 
 game_intro = ("🧝🏻🧝🏻🧝🏻 Welcome to ELF DELIVERY DASH! 🧝🏻🧝🏻🧝🏻\n"
               "You’re the fastest elf, and Santa’s counting on you to deliver 100 letters from children around the world.\n"
-              "⚠️ But it won’t be easy ⚠️\n"
+              "         ⚠️ But it won’t be easy ⚠️\n"
               "As you travel across different Nordic airports, tricky challenges and the sneaky Grinch will try to stop you.\n"
               "Some challenges based on real world facts, others… well, let’s just say you’ll need a sense of humor 😜\n"
               "Can you make it back to Santa with all 100 letters or even more and save Christmas 🎄?")
