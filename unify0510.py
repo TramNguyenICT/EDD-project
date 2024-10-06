@@ -34,7 +34,7 @@ game_intro = ("🧝🏻🧝🏻🧝🏻 Welcome to ELF DELIVERY DASH! 🧝🏻�
               "As you travel across different Nordic airports, tricky challenges and the sneaky Grinch will try to stop you.\n"
               "Some challenges based on real world facts, others… well, let’s just say you’ll need a sense of humor 😜\n"
               "Can you make it back to Santa with all 100 letters or even more and save Christmas 🎄?")
-print(Fore.YELLOW + game_intro)
+print(Fore.LIGHTYELLOW_EX + game_intro)
 print_normal("Press any key to start the game!")
 input()
 
@@ -44,13 +44,13 @@ player_name = input("Type your elf name here: ")
 reindeer_instruction = (f"Surprise! You won't be alone on this adventure, {player_name}!\n"
                         f"It's time to choose a reindeer 🦌 - your trusty companion!\n"
                         f"Each reindeer has its own special ability, useful for specific airports along the way!")
-print(Fore.YELLOW + reindeer_instruction)
+print(Fore.LIGHTYELLOW_EX + reindeer_instruction)
 print_normal("Let's get to know our reindeers by pressing ENTER!")
 input()
 each_reindeer_introduction=("💚 Rudolph: the world famous reindeer, and everyone recognizes him!\n"
                             "🩵 Vixen: a super intelligent reindeer who's great with all things logical and linguistic\n"
                             "🩷 Cupid: the reindeer of love, with a charm that wins the hearts of everyone around")
-print(Fore.YELLOW + each_reindeer_introduction)
+print(Fore.LIGHTYELLOW_EX + each_reindeer_introduction)
 
 print_normal("Who will be your companion?")
 
@@ -58,20 +58,20 @@ reindeer_choice = input("1. Rudolph\n2. Vixen\n3. Cupid\nEnter 1, 2 or 3: ")
 while True:
     if reindeer_choice == "1":
         reindeer_id = 2001
-        print(Fore.YELLOW + "You choose Rudolph!")
+        print(Fore.LIGHTYELLOW_EX + "You choose Rudolph!")
         break
     elif reindeer_choice == "2":
         reindeer_id = 2002
-        print(Fore.YELLOW + "You choose Vixen!")
+        print(Fore.LIGHTYELLOW_EX + "You choose Vixen!")
         break
     elif reindeer_choice == "3":
         reindeer_id = 2003
-        print(Fore.YELLOW + "You choose Cupid!")
+        print(Fore.LIGHTYELLOW_EX + "You choose Cupid!")
         break
     else:
         reindeer_choice = input("Invalid choice. Please choose again! 1.Rudolph, 2.Vixen, 3.Cupid  (Enter 1, 2 or 3): ")
 
-print(Fore.YELLOW + f"Alright {player_name}, let's begin your adventure by hitting ENTER!")
+print(Fore.LIGHTYELLOW_EX + f"Alright {player_name}, let's begin your adventure by hitting ENTER!")
 input()
 print_normal("--------------------------------------------------------------------------------------------------------")
 
@@ -136,7 +136,7 @@ def airport_direction():
     next_airport_right_tuple = cursor.fetchall()
     next_airport_right_name = next_airport_right_tuple[0][0]
 
-    print(Fore.YELLOW + f'On your LEFT is "{next_airport_left_name}" and on the RIGHT is "{next_airport_right_name}". Where do you want to go?')
+    print(Fore.LIGHTYELLOW_EX + f'On your LEFT is "{next_airport_left_name}" and on the RIGHT is "{next_airport_right_name}". Where do you want to go?')
     airport_direction_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
     while True:
         if airport_direction_choice == "l":
@@ -262,7 +262,7 @@ def check_the_grinch(airport_id):
         grinch_quiz(grinch_challenge)
         letter_count = get_letter_count(player_id)
         print(f"Currently, you have {letter_count} letters.")
-        print("That was an unexpected interaction! Press ENTER to continue the journey. ")
+        print_normal("That was an unexpected interaction! Press ENTER to continue the journey. ")
 
 
 def airport_quiz(airport_id):
@@ -913,7 +913,7 @@ airport_id_list.remove(airport_n_2)
 airport_n_1 = random.choice(airport_id_list)
 
 #player go through 2 airports next to the goal
-print(Fore.YELLOW + "Which way do you want to go next?")
+print(Fore.LIGHTYELLOW_EX + "Which way do you want to go next?")
 user_random_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
 while True:
     if user_random_choice == "l" or user_random_choice == "r":
@@ -926,7 +926,7 @@ update_current_airport(player_id, airport_n_2)
 
 print_normal("---------------------------------------------------------------------------------------------------------------")
 
-print(Fore.YELLOW + "Which way do you want to go next?")
+print(Fore.LIGHTYELLOW_EX + "Which way do you want to go next?")
 user_random_choice = input("Type L for LEFT or R for RIGHT: ").lower().strip()
 while True:
     if user_random_choice == "l" or user_random_choice == "r":
