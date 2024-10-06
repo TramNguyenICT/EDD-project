@@ -460,14 +460,14 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
 
     if airport_id == 1021:
-        print("Do you know the famous band ABBA is from Sweden?\n"
+        print("Did you know that the famous band ABBA is from Sweden?\n"
               "Let's fill in the lyrics of their song Dancing Queen to gain 5 letters!\n"
               "Press Enter to see the lyrics")
         input()
-        print("You can dance, you can jive 🎵\n"
-              "Having the time of your life 🎵\n"
-              "Ooh, see that girl, watch that scene 🎵\n"
-              "_____________ the dancing queen 🎵")
+        print("💛 You can dance, you can jive\n"
+              "   Having the time of your life\n"
+              "   Ooh, see that girl, watch that scene\n"
+              "   _____________ the dancing queen 💛")
 
         print("Choose the correct lyrics from the following options:")
         print("A. Dancing\nB. Singing\nC. Digging")
@@ -476,7 +476,7 @@ def airport_quiz(airport_id):
             print(f"Correct 👏 You win {letter_change} letters!")
             letter_count += letter_change
         elif answer1021 in ["a", "b"]:
-            print("Oops! The correct answer is 'Digging the dancing queen'. Better luck next time!")
+            print("Oops is that a Mandela effect 🤨 The correct answer is 'Digging the dancing queen'!")
         else:
             print(f"Invalid choice. No letters for you!")
 
@@ -900,7 +900,7 @@ map_lost_script = ("Oh no❗❗❗\n"
                    "You've just dropped the map and you can't see the next airport that you are going through!\n"
                    "From now on you can only go LEFT or RIGHT until you meet Santa again!")
 print(Back.MAGENTA + Fore.BLACK + map_lost_script)
-print(Style.RESET_ALL)
+print_normal("---------------------------------------------------------------------------------------------------------------")
 
 #random 2 airports next to the goal
 sql19 = f"select airport_id from airport where is_finished = '0'"
@@ -948,9 +948,9 @@ while True:
         user_random_choice = input("Invalid choice! Type L for LEFT or R for RIGHT: ").lower().strip()
         
 #player reach the goal
-rova_script= ("✨ You've arrived at Rovaniemi, the magical home of Santa Claus! ✨\n"
+rova_script= ("✨ Yoohoo! You've finally arrived at Rovaniemi, the magical home of Santa Claus! ✨\n"
               "🕯️ The air is filled with laughter, music, and the delightful scent of cinnamon! 🕯️\n"
-              "Santa’s waiting for you, but wait... did you bring the letters?")
+              "🎅 Santa’s waiting for you, but wait... did you bring the letters?")
 print(Fore.LIGHTMAGENTA_EX + rova_script)
 print_normal("Let’s make Christmas magical! Press any key to give your letters to Santa Claus 🎅!")
 input()
@@ -974,7 +974,7 @@ lose_goal_intro = (f"Oh no... 😭😭😭\n"
                    f"You delivered the total of {final_letter_count} letters to Santa.\n"
                    f"The Grinch was just a little too sneaky, and a few letters slipped away.\n"
                    f"But Christmas isn’t over yet! There’s still time to try again.\n"
-                   f"Santa believes in you, and next time, let's bring all the letters to him!"
+                   f"Santa believes in you, and next time, let's bring all the letters to him!\n"
                    f"Thank you for playing ELF DELIVERY DASH, and have a great holiday! 💖")
 
 if result == "Win":
