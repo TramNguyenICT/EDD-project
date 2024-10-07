@@ -308,7 +308,7 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
 
     if airport_id == 1004:
-        print("Let's test your Finnish language sine your're in Finland!\n"
+        print("Let's test your Finnish language since your're in Finland!\n"
               "What's the English equivalent of 'Opiskelija'?")
         a1004 = input('Opiskelija means: ').lower().strip()
         if a1004 == 'student':
