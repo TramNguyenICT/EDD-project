@@ -2,10 +2,10 @@ import mysql.connector
 import random
 
 connection = mysql.connector.connect(
-    host = 'localhost',
+    host = '127.0.0.1',
     port = 3306,
-    database = 'elfdeliverydash',
-    user = 'maika',
+    database = "elfdeliverydash",
+    user = 'root',
     password = '180790',
     autocommit = True,
     charset='utf8mb4',
@@ -218,7 +218,7 @@ def airport_quiz(airport_id):
 
     if airport_id == 1002:
         print(' Where is Ivalo Aiport located?')
-        a1002 = input('A.Northern Finland\nB. Southern Finland (A\B)').lower().strip()
+        a1002 = input('A.Northern Finland\nB. Southern Finland (A/B)').lower().strip()
         if a1002 == 'a':
             print('Congratulations! You got 10 letters!')
             letter_count += letter_change
