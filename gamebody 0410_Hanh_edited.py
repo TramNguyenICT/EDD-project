@@ -19,20 +19,20 @@ cursor.execute(sql1)
 connection.commit()
 
 #cap nhat grinch id trong airport = null
-sql8 = f"UPDATE airport SET grinch_id = NULL"
-cursor.execute(sql8)
+sql2 = f"UPDATE airport SET grinch_id = NULL"
+cursor.execute(sql2)
 connection.commit()
 
 
 game_intro = "Hello!"
 print(game_intro)
-player_name = input("How should I call you? ")
+player_name = input("How should I call you? \n")
 print("Hello ", player_name)
 
 reindeer_instruction = " Here is a surprise! You will not be alone in this journey! Now, it's time to choose your reindeer companion who will be a partner.\nYou will have an exciting journey through various airports, and along the way, a loyal reindeer companion will assist you in completing challenges.\nEach reindeer has a unique ability that will be useful at specific airports during the journey!"
 print(reindeer_instruction)
-#each_reindeer_introduction="Now, let's know about your potential companion. First, Rudolph is a famous reindeer all over the world, and everyone recognizes him!\nThe second one is Vixen, he is incredibly intelligent and well-versed in all things logical and linguistic.\nAnd last, Cupid is a reindeer who represents the loving. He is irresistible charm wins the hearts of everyone around"
-#print(reindeer_introduction)
+each_reindeer_introduction="Now, let's know about your potential companion. First, Rudolph is a famous reindeer all over the world, and everyone recognizes him!\nThe second one is Vixen, he is incredibly intelligent and well-versed in all things logical and linguistic.\nAnd last, Cupid is a reindeer who represents the loving. He is irresistible charm wins the hearts of everyone around"
+print(reindeer_introduction)
 print("Who will be your companion? ")
 
 reindeer_choice = int(input("1.Rudolph, 2.Vixen, 3.Cupid (Enter 1, 2 or 3): "))
@@ -51,9 +51,9 @@ while True:
 
 # cập nhật player_name và reindeer_id vào bảng player
 
-sql2 = f"INSERT INTO player(player_name, reindeer_id) VALUES ('{player_name}',{reindeer_id});"
+sql3 = f"INSERT INTO player(player_name, reindeer_id) VALUES ('{player_name}',{reindeer_id});"
 cursor = connection.cursor()
-cursor.execute(sql2)
+cursor.execute(sql3)
 connection.commit()
 player_id = cursor.lastrowid
 
@@ -61,48 +61,48 @@ grinch_challenge = random.randint(1, 6)
 grinch_airport = random.randint(1002, 1059)
 
 # cập nhật grinch_challenge_id vào airport id đó)
-sql3 = f"UPDATE airport SET grinch_id = {grinch_challenge} WHERE airport_id ={grinch_airport}"
-cursor = connection.cursor()
-cursor.execute(sql3)
-connection.commit()
-
-helsinki_welcome = "Welcome to Helsinki Airport. Here is your starting location on your exciting journey!\n And you have 100 letters in your backpack. Please Keep track of your available letters. The number of letters might affect your win!"
-print(helsinki_welcome)
-current_airport = 1001
-sql3 = f"UPDATE player SET letter_count = (SELECT letter_change FROM airport WHERE airport_id = 1001) WHERE player_id = '{player_id}'"
-cursor.execute(sql3)
-letter_count = cursor.fetchone()
-
-# cập nhật is_finished của Helsinki = 1
-sql4 = f"UPDATE airport SET is_finished = '1' WHERE airport_id = '{current_airport}'"
+sql4 = f"UPDATE airport SET grinch_id = {grinch_challenge} WHERE airport_id ={grinch_airport}"
 cursor = connection.cursor()
 cursor.execute(sql4)
 connection.commit()
 
+helsinki_welcome = "Welcome to Helsinki-Vantaa Airport. Here is your starting location on your exciting journey!\n And you have 100 letters in your backpack. Please Keep track of your available letters. The number of letters might affect your win!"
+print(helsinki_welcome)
+current_airport = 1001
+sql5 = f"UPDATE player SET letter_count = (SELECT letter_change FROM airport WHERE airport_id = 1001) WHERE player_id = '{player_id}'"
+cursor.execute(sql5)
+letter_count = cursor.fetchone()
+
+# cập nhật is_finished của Helsinki = 1
+sql6 = f"UPDATE airport SET is_finished = '1' WHERE airport_id = '{current_airport}'"
+cursor = connection.cursor()
+cursor.execute(sql6)
+connection.commit()
+
 def update_current_airport(player_id, current_airport):
-    sql18 = f"UPDATE player SET current_airport = '{current_airport}' WHERE player_id = '{player_id}'"
-    cursor.execute(sql18)
-    sql14 = f"UPDATE airport SET is_finished = '1' WHERE airport_id = '{current_airport}'"
-    cursor.execute(sql14)
+    sql7 = f"UPDATE player SET current_airport = '{current_airport}' WHERE player_id = '{player_id}'"
+    cursor.execute(sql7)
+    sql8 = f"UPDATE airport SET is_finished = '1' WHERE airport_id = '{current_airport}'"
+    cursor.execute(sql8)
     connection.commit()
 
 def airport_direction():
     # tao ra airport_list
-    sql15 = f"select airport_id from airport where is_finished = '0'"
-    cursor.execute(sql15)
+    sql9 = f"select airport_id from airport where is_finished = '0'"
+    cursor.execute(sql9)
     airport_id_tuples = cursor.fetchall()
     airport_id_list = [item[0] for item in airport_id_tuples]
     airport_id_list.remove(1060)
 
     next_airport_left = random.choice(airport_id_list)
-    sql16 = f"select airport_name from airport where airport_id = {next_airport_left}"
-    cursor.execute(sql16)
+    sql10 = f"select airport_name from airport where airport_id = {next_airport_left}"
+    cursor.execute(sql10)
     next_airport_left_tuple = cursor.fetchall()
     next_airport_left_name = next_airport_left_tuple[0][0]
     airport_id_list.remove(next_airport_left)
     next_airport_right = random.choice(airport_id_list)
-    sql17 = f"select airport_name from airport where airport_id = {next_airport_right}"
-    cursor.execute(sql17)
+    sql11 = f"select airport_name from airport where airport_id = {next_airport_right}"
+    cursor.execute(sql11)
     next_airport_right_tuple = cursor.fetchall()
     next_airport_right_name = next_airport_right_tuple[0][0]
 
@@ -122,104 +122,115 @@ def airport_direction():
     return current_airport
 
 def airport_greeting(airport_id):
-    sql19 = f"SELECT greeting FROM airport WHERE airport_id = {airport_id}"
-    cursor.execute(sql19)
+    sql12 = f"SELECT greeting FROM airport WHERE airport_id = {airport_id}"
+    cursor.execute(sql12)
     greeting_tuple = cursor.fetchall()
     greeting = greeting_tuple[0][0]
     return greeting
 
 def get_airport_reindeer_id(airport_id):
     # test the reindeer_id in this airport
-    sql9 = f"SELECT reindeer_id FROM airport WHERE airport_id = {airport_id}"
-    cursor.execute(sql9)
+    sql13 = f"SELECT reindeer_id FROM airport WHERE airport_id = {airport_id}"
+    cursor.execute(sql13)
     airport_reindeer_id_tuple = cursor.fetchall()
     airport_reindeer_id = int(airport_reindeer_id_tuple[0][0])
     return airport_reindeer_id
 
 def get_letter_count(player_id):
-    sql21 = f"SELECT letter_count FROM player WHERE player_id = {player_id}"
-    cursor.execute(sql21)
+    sql14 = f"SELECT letter_count FROM player WHERE player_id = {player_id}"
+    cursor.execute(sql14)
     letter_count_tuple = cursor.fetchall()
     return int(letter_count_tuple[0][0])
 
 def update_letter_count(player_id,letter_count):
-    sql5 = f"UPDATE player SET letter_count = {letter_count} WHERE player_id = '{player_id}'"
-    cursor.execute(sql5)
+    sql15 = f"UPDATE player SET letter_count = {letter_count} WHERE player_id = '{player_id}'"
+    cursor.execute(sql15)
     connection.commit()
 
 def grinch_quiz(challenge_id):
+    sql16= f"SELECT letter_change_grinch FROM grinch WHERE grinch_challenge_id = {grinch_challenge}"
+    cursor.execute(sql16)
+    letter_change_grinch_tuple = cursor.fetchall()
+    letter_change_grinch = int(letter_change_grinch_tuple[0][0])
     letter_count = get_letter_count(player_id)
-    print("Hahaha, Grinch's here.")
+    print("Hahaha, Grinch is here.")
     print("What a coincidence we met!")
     print("I have a challenge for you, little elf.")
     if challenge_id == 1:
         print("Do you like Christmas Carol? ")
-        choice = input("Type Yes/No ").lower().strip()
+        choice = input("Type Yes/No \n").lower().strip()
         if choice == 'no':
-            print("It's strange for an elf not to like Christmas Carol")
+            print("It's strange for an elf not to like Christmas Carol.")
             print("I like you, sweetie.")
             print("Take these 20 letters.")
-            letter_count += 20
-        #elif choice == 'yes':
-            print("I hate Chistmas, I hate anything related to Chrismas.")
+            letter_count += letter_change_grinch
+        elif choice == 'yes':
+            print("I hate Christmas, I hate anything related to Christmas.")
             print("I will stole 20 letters from you, hahaha.")
             print("Goodbye, little elf")
-            letter_count -= 20
+            letter_count -= letter_change_grinch
         else:
             print("I don't understand what you mean! ")
-            print("Anyway, I still stole your 20 letters, hahaha.")
+            print("Anyway, I still stole your 20 letters, hahaha")
             print("Goodbye, little elf")
-            letter_count -= 20
+            letter_count -= letter_change_grinch
     if challenge_id == 2:
         print("What is your favorite color?")
         choice = input("Mine is: ").lower().strip()
         if choice == "green":
             print("That's my color!")
             print("I will give you 10 letters for that.")
-            letter_count += 10
+            letter_count += letter_change_grinch
         else:
             print("Noooo, only green is beautiful")
             print("I don't like you! Bye!")
+            letter_count -= letter_change_grinch
     if challenge_id == 3:
         print("What’s faster: a sneeze or a cheetah?")
-        choice = input("A.Sneeze\nB.Cheetah\nA or B: ").lower().strip()
+        choice = input("A.Sneeze\nB.Cheetah\nChoose A or B: \n").lower().strip()
         if choice == "a" or choice == "sneeze":
             print("Hmm, a smart elf. I've never thought you could get the right answer!")
             print("Here is 20 letters for you!")
-            letter_count += 20
-        else:
+            letter_count += letter_change_grinch
+        elif choice == "b" or choice == "cheetah":
             print("It's Sneeze! A sneeze can travel up to 160 km/h, faster than a cheetah’s sprint!")
             print("So sad, you lost 20 letters!")
-            letter_count -= 20
+            letter_count -= letter_change_grinch
+        else:
+            print("I don't understand what you mean. You will lose 20 letters.")
+            letter_count -= letter_change_grinch
     if challenge_id == 4:
         print("Which would taste worse: a sock-flavored ice cream or ketchup-flavored toothpaste?")
-        choice = input('A. A sock-flavored ice cream\nB, A ketchup-flavored toothpaste').lower().strip()
-        if choice == "b":
-            print("Sure! At least it is edible! Here're 20 letters for you!")
-            letter_count += 20
-        else:
+        choice = input('A. A sock-flavored ice cream\nB. A ketchup-flavored toothpaste,\n').lower().strip()
+        if choice == "a":
+            print("Sure! At least it is edible! Here is 20 letters for you!")
+            letter_count += letter_change_grinch
+        elif choice=='b':
             print("No, you can't eat the toothpaste. Give me 20 letters!")
-            letter_count -= 20
+            letter_count -= letter_change_grinch
+        else:
+            print("I don't understand what you mean. You will lose 20 letters.")
+            letter_count -= letter_change_grinch
     if challenge_id == 5:
         print("What is the name of my dog? ")
-        choice = input("A.Milo, B.Max, C.Rex, D.Leo").lower().strip()
+        choice = input("A.Milo, B.Max, C.Rex, D.Leo\n").lower().strip()
         if choice == "b" or choice == "max":
             print("Yes, the most adorable dog in the world is Max!!!")
-            letter_count += 10
+            letter_count += letter_change_grinch
         else:
             print("How come you don't know Max, such a cute dog. How pitiful. I'll take 10 letters from you.")
-            letter_count -= 10
+            letter_count -= letter_change_grinch
     if challenge_id == 6:
         print("What do I want to receive for Christmas?")
-        choice = input("A.A Christmas cake\nB.Iphone 16\nC.New dogs clothes\nD.A Sweaters\nA,B,C or D: ")
-        if choice == "c" or choice == "newdogsclothes":
+        choice = input("A. A Christmas cake\nB. An iphone 16 pro max\nC. New dogs clothes\nD. A sweaters\nType A/B/C or D:\n")
+        if choice == "c" or choice == "new dogs clothes":
             print("That's right! This winter will be colder. Max, my dog, has to be warm. Do you mind give me some?")
             print("Anyway, I give you 10 letters.")
-            letter_count += 10
+            letter_count += letter_change_grinch
         else:
             print("Silly elf. I don't need anything. But Max, my dog, needs some clothes to survive this winter.")
             print("I'm not happy. I will take 10 letters from you.")
-            letter_count -= 10
+            letter_count -= letter_change_grinch
     update_letter_count(player_id,letter_count)
 
 def check_the_grinch(airport_id):
@@ -234,8 +245,8 @@ def airport_quiz(airport_id):
     print(airport_greeting(airport_id))
 
     #get the value of letter_change
-    sql20 = f"SELECT letter_change FROM airport WHERE airport_id = {airport_id}"
-    cursor.execute(sql20)
+    sql17 = f"SELECT letter_change FROM airport WHERE airport_id = {airport_id}"
+    cursor.execute(sql17)
     letter_change_tuple = cursor.fetchall()
     letter_change = int(letter_change_tuple[0][0])
 
@@ -243,19 +254,19 @@ def airport_quiz(airport_id):
     letter_count = get_letter_count(player_id)
 
     #get the reindeer_id
-    sql10 = f"SELECT reindeer_id FROM player WHERE player_id = '{player_id}'"
-    cursor.execute(sql10)
+    sql18 = f"SELECT reindeer_id FROM player WHERE player_id = '{player_id}'"
+    cursor.execute(sql18)
     reindeer_id_tuple = cursor.fetchall()
     reindeer_id = int(reindeer_id_tuple[0][0])
 
     if airport_id == 1002:
-        print(' Where is Ivalo Aiport located?')
-        a1002 = input('A.Northern Finland\nB. Southern Finland (A or B)').lower().strip()
+        print('Where is Ivalo Aiport located?')
+        a1002 = input('A.Northern Finland\nB. Southern Finland (A or B)\n').lower().strip()
         if a1002 == 'a':
             print('Congratulations! You got 10 letters!')
             letter_count += letter_change
         else:
-            print('Sorry, you lose 10 letters!')
+            print('Sorry, the answer is A. Northern Finland. You lose 10 letters!')
             letter_count -= letter_change
 
     if airport_id == 1003:
@@ -268,41 +279,41 @@ def airport_quiz(airport_id):
             letter_count -= letter_change
 
     if airport_id == 1004:
-        print(" What is English equivalent of 'Opiskelja'?")
-        a1004 = input('Opiskelja is ').lower().strip()
+        print(" What is English equivalent of 'Opiskelija'?")
+        a1004 = input("'Opiskelija' is ").lower().strip()
         if a1004 == 'student':
             print("You got 2 letters!")
             letter_count += letter_change
 
         else:
-            print("Sorry, you lose 2 letters!")
+            print("Sorry, the answer is student.  You lose 2 letters!")
             letter_count -= letter_change
 
     if airport_id == 1005:
         print("What should you do when you see a polar bear in Finland?")
-        a1005 = input("A. Run away\nB. Play dead\nC. Try to make yourself look bigger").lower().strip()
+        a1005 = input("A. Run away\nB. Play dead\nC. Try to make yourself look bigger\n").lower().strip()
         print("HAHAHA! There is no polar bear in the wild in Finland! You get nothing!")
 
     if airport_id == 1006:
-        print("Let 's answer a question on the northern lights phenomenon.")
+        print("Let's answer a question on the northern lights phenomenon.")
         print("What are the Northern Lights also known as?")
         answer1006 = 'aurora borealis'
         a1006 = input(" The answer is: ").lower().strip()
         if a1006 == answer1006 or a1006 == 'aurora':
-            print("Congratulations! 10 more letters now are in your bag")
+            print("Congratulations! 10 more letters now are in your backpack")
             letter_count += letter_change
         else:
-            print("Sorry, you lose 10 more letters now are in your bag")
+            print("So sorry, the answer is aurora borealis or aurora. You lose 10 more letters.")
             letter_count -= letter_change
 
     if airport_id == 1007:
         print("Let's rearrange letter of English words so that they still have meanings: LISTEN, RACE, CINEMA")
 
         if reindeer_id == 2002:
-            print("Hi. It's me, Vixen - the reindeer.")
-            print("I can help you with this!")
-            print("I have a close friend, he is a care iceman but he is a bit silent.")
-            print("That's the hint. Good luck")
+            print("Hi. It's me, Vixen - your reindeer.")
+            print("I can help you to solve this!")
+            print("I have a close friend. He is a care iceman but he is a bit silent.")
+            print("That's the hint. Good luck!")
         a1007a = input("LISTEN--> ").lower().strip()
         a1007b = input("RACE--> ").lower().strip()
         a1007c = input("CINEMA--> ").lower().strip()
@@ -310,7 +321,7 @@ def airport_quiz(airport_id):
             print("Congratulations! You got 6 letters!")
             letter_count += letter_change
         else:
-            print("Sorry, you lose 6 letters!")
+            print("Mmmm, your answers are not correct.\n'silent, care, iceman' are the answers. Sorry, you lose 6 letters!")
             letter_count -= letter_change
 
     if airport_id == 1008:
@@ -327,12 +338,17 @@ def airport_quiz(airport_id):
 
         # change random two remaining reindeers
     if airport_id == 1010:
-        print("congratulations! You have 1 chance to change your reindeer!")
-        a1010 = input("Yes or No? ").lower().strip()
-        if a1010 == 'yes':
-            print(" Your reindeer now is ...")
-        if a1010 == 'no':
-            print(" You did not change your reindeer!Yours is still ...")
+        print("Which of the following is a unique feature of Oulu Airport? (Type A/B/C or D)")
+        a1010 = input("A. It has a sea-facing runway\nb. It operates only at night.\nC. It has a cold weather laboratory for aircraft.\nD. It uses solar-powered control towers.\n").lower().strip()
+        if a1010 == 'c':
+            print(" You are correct! You get more 10 letters.")
+            letter_count+=letter_change
+        elif a1010 == 'a' or a1010 == 'b' or a1010=='d':
+            print("So sorry! That's not the correct answer. The answer is C.It has a cold weather laboratory for aircraft.")
+            letter_count-=letter_change
+        else:
+            print("Your answer is invalid!")
+            letter_count-=letter_change
 
     if airport_id == 1011:
         letter_count -= letter_change
@@ -343,6 +359,16 @@ def airport_quiz(airport_id):
     if airport_id == 1013:
         print("You have no challenges here! You can move to next airport.")
 
+    if airport_id == 1014:
+        print("You meet a poor girl selling matches on the street. What would you do?")
+        answer1060 = input("A.Nothing.\nB.Buy all the matches.\nC. Give her food. \nType A/B or C\n").lower().strip()
+        if answer1060 == "b" or answer1060 =="c":
+            print("You have such a warm heart. Here are your 10 letters.")
+            letter_count += letter_change
+        else:
+            print("Don't be so cold. You lost 10 letters.")
+            letter_count -= letter_change
+
     if airport_id == 1015:
         print("I am an odd number. But if you take away a letter from my name, I will become even. What am I?")
         a1015 = input("I am ").lower().strip()
@@ -350,11 +376,11 @@ def airport_quiz(airport_id):
             print("Congratulations! You got 5 letters!")
             letter_count += letter_change
         else:
-            print("Sorry, you lose 5 letters!")
+            print("Sorry, the answer is 7. You'll lose 5 letters!")
             letter_count -= letter_change
 
     if airport_id == 1016:
-        print("Sorry I have to say that your number of letters is taken of 50!")
+        print("Sorry I have to say that your number of letters is taken of 50 at this airport!")
         letter_count -= letter_change
 
         if reindeer_id == 2001:
@@ -367,31 +393,30 @@ def airport_quiz(airport_id):
 
     if airport_id == 1017:
         print("Your number of letters is doubled!")
-        letter_count *= 2
+        letter_count *= letter_change
 
     if airport_id == 1018:
         print("Do you like chocolate?")
         a1018 = input("Yes or No: ").lower().strip()
         if a1018 == 'yes':
-            print(
-                " You'll go for a tour at Chocolate Factory (in Charlie and the Chocolate Factory) and it costs 10 letters.")
+            print(" You'll go for a tour at Chocolate Factory (in Charlie and the Chocolate Factory) and it costs you 10 letters.")
             letter_count -= letter_change
         if a1018 == 'no':
             print("You'll move to the next airport!")
 
     if airport_id == 1019:
         print("Your number of letters is divided by 2!")
-        letter_count = letter_count // 2
+        letter_count = letter_count // letter_change
 
     if airport_id == 1020:
         print("Let's help the farmer!")
         a1020 = input("A farmer has 15 cows, and all but 8 of them run away.\n"
                       "How many cows does the farmer have left? (Give a number)").lower().strip()
         if a1020 == '8' or a1020 == 'eight':
-            print("5 letters more for you!")
+            print("You're right! 5 letters more for you!")
             letter_count += letter_change
         else:
-            print("Oops! Your answer is wrong! He has eight. You lose 5 letters.")
+            print("Oops! Your answer is wrong! 8 is the answer. You lose 5 letters.")
             letter_count -= letter_change
 
     if airport_id == 1021:
@@ -403,8 +428,8 @@ def airport_quiz(airport_id):
               "_____________ the dancing queen")
 
         print("Choose the correct lyrics from the following options:")
-        print("1. Dancing\n2. Singing\n3. Digging")
-        answer1021 = input("Enter the correct choice (A, B, or C): ").lower().strip()
+        print("A. Dancing\nB. Singing\nC. Digging")
+        answer1021 = input("Enter the correct choice (A, B, or C)\n").lower().strip()
         if answer1021 == "c":
             print("Correct! You win 5 letters!")
             letter_count += letter_change
@@ -431,9 +456,9 @@ def airport_quiz(airport_id):
     if airport_id == 1023:
         print("Have you ever watch movie Midsommar from Sweden?")
         print("A. Yes\nB. No")
-        answer1023 = input("Enter your choice (A or B): ").lower().strip()
+        answer1023 = input("Enter your choice (A or B)\n").lower().strip()
         if answer1023 == "a":
-            print("Here 5 letters for the traumatic experience hohoho!")
+            print("Here is 5 letters for the traumatic experience hohoho!")
             letter_count += letter_change
         elif answer1023 == "b":
             print("Good, do not watch! You don't miss out anything! Let's move on!")
@@ -448,11 +473,11 @@ def airport_quiz(airport_id):
         choices1024 = ["rock", "scissors", "paper"]
         computer_choice = random.choice(choices1024)
         # your choice
-        answer1024 = input("Enter your choice (rock, scissors, paper): ").lower().strip()
+        answer1024 = input("Enter your choice (rock, scissors, paper)\n").lower().strip()
         if answer1024 not in choices1024:
             print("Invalid choice. No letters for you!")
         else:
-            print(f"\nYou chose {answer1024}. The computer chose {computer_choice}.\n")
+            print(f"You chose {answer1024}. The computer chose {computer_choice}.\n")
             if answer1024 == computer_choice:
                 print("It's a draw! To the next destination!")
             elif (answer1024 == "rock" and computer_choice == "scissors") or \
@@ -469,13 +494,13 @@ def airport_quiz(airport_id):
 
     if airport_id == 1025:
         print("Do you know which was an important measurement unit proposed by a famous Swedish physicist?")
-        print("A. ampere (electric current)\nB. degree celsius (temperature)\nC. kelvin (thermodynamic emperature)")
+        print("A. ampere (electric current)\nB. degree celsius (temperature)\nC. kelvin (thermodynamic temperature)")
 
-        answer1025 = input("Enter the correct choice (A, B, or C): ").lower().strip()
+        answer1025 = input("Enter the correct choice (A, B, or C)\n").lower().strip()
 
         if answer1025 == "a" or answer1025 == "c":
             print("Incorrect!\n"
-                  "It was degree celsius named after the Swedish physicist Anders Celsius (1701–1744)")
+                  "It was degree celsius named after the Swedish physicist Anders Celsius (1701–1744).")
         elif answer1025 == "b":
             print("Correct!\n"
                   "Degree celsius named after the Swedish physicist Anders Celsius (1701–1744)\n"
@@ -488,15 +513,15 @@ def airport_quiz(airport_id):
     # nobel
 
     if airport_id == 1026:
-        print(
-            "Swedish entrepreneur Alfred Nobel left the majority of this fortune to the establishment of Nobel Prize.")
+        print("Swedish entrepreneur Alfred Nobel left the majority of this fortune to the establishment of Nobel Prize.")
         print("Which of the following is NOT a Nobel Prize category?")
         print(f"A. Physics\nB. Mathematics\nC. Chemistry")
 
-        answer1026 = input("Enter the correct choice (A, B, or C): ").lower().strip()
+        answer1026 = input("Enter the correct choice (A, B, or C)\n").lower().strip()
 
         if answer1026 == "a" or answer1026 == "c":
-            print("Sorry it's incorrect! The answer is Mathematics.")
+            print("Sorry it's incorrect! The answer is Mathematics. You'll lose 5 letters!")
+            letter_count += letter_change
         elif answer1026 == "b":
             print("Correct! You gain 5 letters!")
             letter_count += letter_change
@@ -520,7 +545,7 @@ def airport_quiz(airport_id):
         print("Let's stay for a night!\n"
               "Press Enter to pay")
         input()
-        print("It costed you 20 letters but it was so cooool (another pun lol)")
+        print("It costed you 20 letters but it was so cooool (another pun lol)!")
         letter_count -= letter_change
 
     # 1029
@@ -541,7 +566,7 @@ def airport_quiz(airport_id):
               "Is that a cat?")
         print("Do you want to pet it?")
 
-        answer1030 = input("Type Yes or No: ").lower().strip()
+        answer1030 = input("Type Yes or No\n").lower().strip()
         if answer1030 == "yes":
             print("You got bitten hoooooman!\n"
                   "The cat takes 10 letters and runs away!")
@@ -844,15 +869,7 @@ def airport_quiz(airport_id):
             print("You lost 5 letters")
             letter_count -= letter_change
 
-    if airport_id == 1014:
-        print("You meet a poor girl selling matches on the street. What would you do?")
-        answer1060 = input("A.Nothing.\nB.Buy all the matches.\nC. Give her food. \nA or B or C: ").lower().strip()
-        if answer1060 == "b" or answer1060 =="c":
-            print("You have such a warm heart. Here are your 10 letters.")
-            letter_count += letter_change
-        else:
-            print("Don't be so cold. You lost 10 letters.")
-            letter_count -= letter_change
+
 
     # cập nhật letter_count
     update_letter_count(player_id,letter_count)
@@ -870,8 +887,8 @@ map_lost_script = "Lost rui ne ma "
 print(map_lost_script)
 
 #random 2 airports next to the goal
-sql23 = f"select airport_id from airport where is_finished = '0'"
-cursor.execute(sql23)
+sql19 = f"select airport_id from airport where is_finished = '0'"
+cursor.execute(sql19)
 airport_id_tuples = cursor.fetchall()
 airport_id_list = [item[0] for item in airport_id_tuples]
 airport_id_list.remove(1060)
@@ -912,8 +929,8 @@ if int(final_letter_count) >= 100:
     result = "Win"
 else:
     result = "Lose"
-sql24 = f"UPDATE player SET result = '{result}' WHERE player_id = '{player_id}'"
-cursor.execute(sql24)
+sql20 = f"UPDATE player SET result = '{result}' WHERE player_id = '{player_id}'"
+cursor.execute(sql20)
 win_goal_intro = "Win rui ne ma"
 lose_goal_intro="Loseeeerrrrr "
 
